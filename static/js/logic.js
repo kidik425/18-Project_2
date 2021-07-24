@@ -1,3 +1,5 @@
+import populateBar from './barchart.js'; 
+
 //var queryUrl = "https://data.lacity.org/resource/bunu-zsyc.geojson"
 
 var queryUrl = 'static/data/disp.geojson' 
