@@ -1,4 +1,6 @@
-var queryUrl = "https://data.lacity.org/resource/bunu-zsyc.geojson"
+// var queryUrl = "https://data.lacity.org/resource/bunu-zsyc.geojson"
+
+var queryUrl = '../../json_files/disp.JSON' 
 
 // Perform a GET request to the query URL
 d3.json(queryUrl).then(function(data) {
