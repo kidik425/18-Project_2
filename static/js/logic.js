@@ -1,12 +1,12 @@
 //var queryUrl = "https://data.lacity.org/resource/bunu-zsyc.geojson"
 
-var queryUrl = '../../json_files/disp.JSON' 
+var queryUrl = 'static/data/disp.geojson' 
 
 // Perform a GET request to the query URL
 d3.json(queryUrl).then(function(data) {
   // Once we get a response, send the data.features object to the createFeatures function
   createFeatures(data.features);
-  // console.log (data)
+  console.log (data)
 });
 
 function createFeatures(dispensaryData) {
