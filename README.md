@@ -8,6 +8,7 @@
 Crime Data Set: https://catalog.data.gov/dataset/crime-data-from-2010-to-2019 <br>
 Dispensary Data Set 1: https://cannabis.lacity.org/personal-activity/find-licensed-retailers <br>
 Dispensary Data Set 2: https://search.cannabis.ca.gov <br>
+LAPD Community Police Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about <br>
 
 **ETL: Crime Data** <br>
 •	Imported as CSV from Los Angeles City <br>
