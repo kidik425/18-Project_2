@@ -1,6 +1,8 @@
 //var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 const dispQuery = 'static/data/disp.geojson'
-const crimesQuery = "http://s3-us-west-2.amazonaws.com/boundaries.latimes.com/archive/1.0/boundary-set/la-county-law-enforcement-reporting-districts.geojson" // "static/data/crime2013.geojson"
+const crimesQuery = "static/data/crime_2013.geojson"
+//"http://s3-us-west-2.amazonaws.com/boundaries.latimes.com/archive/1.0/boundary-set/la-county-law-enforcement-reporting-districts.geojson" 
+const crimeData = "static/data/crime2013.geojson"
 
 var dispensaries = L.layerGroup();
 var crime = L.layerGroup();
@@ -57,9 +59,9 @@ d3.json(dispQuery).then(function (data) {
     // Define a function we want to run once for each feature in the features array
     function onEachFeature(feature, layer) {
         layer.bindPopup("<h3>" + feature.properties.business_name +
-            "</h3><hr><p>" + new Date(feature.properties.location_start_date) + "</p>");
-    }
-
+          "</h3><hr><p>" + new Date(feature.properties.location_start_date) + "</p>");
+      }
+      
     // Create a GeoJSON layer containing the features array on the earthquakeData object
     // Add GeoJSON to the earthquakes layergroup
     L.geoJSON(data.features, {
@@ -71,7 +73,6 @@ d3.json(dispQuery).then(function (data) {
 //////////////////////////////////////////////////
 // Map crime data
 d3.json(crimesQuery).then(function (data) {
-    // console.log(data)
     // Creating style for the choropleth
 
     function style(feature) {
@@ -85,8 +86,7 @@ d3.json(crimesQuery).then(function (data) {
         }
     }
 
-    // Create a GeoJSON layer containing the features array on the techtonicData object
-    // Add GeoJSON to the techtonics layergroup
+    // Add crimes GeoJSON to the techtonics layergroup
     L.geoJSON(data.features, { style: style }).addTo(crime)
 
 });
@@ -95,7 +95,7 @@ d3.json(crimesQuery).then(function (data) {
 var myMap = L.map("map", {
     center: [34.0522, -118.30],
     zoom: 11,
-    layers: [streetmap, dispensaries, crime] //ORDERING THIS SO THAT THE TOOLTIPS WORK
+    layers: [darkmap, dispensaries, crime] //ORDERING THIS SO THAT THE TOOLTIPS WORK
 });
 
 // Create a layer control
@@ -109,29 +109,16 @@ L.control.layers(baseMaps, overlayMaps, {
 function getColor(counts) {
     var color;
 
-    if (counts < 2) { color = '#33FF61' }
-    else if (counts < 3) { color = '#DDFF33' }
-    else if (counts < 4) { color = '#FFE333' }
-    else if (counts < 6) { color = '#E6b52E' }
-    else if (counts < 10) { color = '#CC9329' }
+    if (counts < 6000) { color = '#33FF61' }
+    else if (counts < 6500) { color = '#DDFF33' }
+    else if (counts < 7000) { color = '#FFE333' }
+    else if (counts < 7500) { color = '#E6b52E' }
+    else if (counts < 8000) { color = '#CC9329' }
     else { color = '#A35322' }
 
     return color;
 }
 
-
-function getColor(category) {
-    var color;
-
-    if (category === '-10—9') { color = '#33FF61' }
-    else if (category === '10—29') { color = '#DDFF33' }
-    else if (category === '30—49') { color = '#FFE333' }
-    else if (category === '50—69') { color = '#E6b52E' }
-    else if (category === '70—89') { color = '#CC9329' }
-    else { color = '#A35322' }
-
-    return color;
-}
 
 
 ////////////////////////////////////////////////////
