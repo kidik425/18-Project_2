@@ -1,30 +1,32 @@
-import populateBar from './barchart.js'; 
+//import populateBar from './barchart.js'; 
 
 //var queryUrl = "https://data.lacity.org/resource/bunu-zsyc.geojson"
 
-var queryUrl = 'static/data/disp.geojson' 
+var queryUrl = 'static/data/disp.geojson'
 
 // Perform a GET request to the query URL
-d3.json(queryUrl).then(function(data) {
+d3.json(queryUrl).then(function (data) {
   // Once we get a response, send the data.features object to the createFeatures function
-  createFeatures(data.features);
-  console.log (data)
+  createMarkers(data.features);
+  //  console.log(data)
 });
 
-function createFeatures(dispensaryData) {
+////////////////////////////////////////////////////
+function createMarkers(dispensaryData) {
   function onEachFeature(feature, layer) {
-    layer.bindPopup("<h3>" + feature.properties.business_name+
-    "</h3><hr><p>" + new Date(feature.properties.location_start_date) + "</p>");
+    layer.bindPopup("<h3>" + feature.properties.business_name +
+      "</h3><hr><p>" + new Date(feature.properties.location_start_date) + "</p>");
   }
 
-var dispensaries = L.geoJSON(dispensaryData, {
-  onEachFeature: onEachFeature
-});
+  var dispensaries = L.geoJSON(dispensaryData, {
+    onEachFeature: onEachFeature
+  });
 
-createMap(dispensaries);
+  createMap(dispensaries);
 }
-function createMap(dispensaries) {
 
+////////////////////////////////////////////////////
+function createMap(dispensaries) {
   // Define streetmap and darkmap layers
   var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
     attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
@@ -53,22 +55,37 @@ function createMap(dispensaries) {
     Dispensaries: dispensaries
   };
 
-var myMap = L.map("map", {
-  center: [34.0522, -118.30],
-  zoom: 11,
-  layers: [streetmap, dispensaries]
+  var myMap = L.map("map", {
+    center: [34.0522, -118.30],
+    zoom: 11,
+    layers: [streetmap, dispensaries]
+  });
+
+  //create a filter for stores opened before 2019 (in order to correlate with crime data)
+  // var dispData = L.geoJson(queryUrl, {filter: dispensaryFilter}).addTo(map);
+
+  // function dispensaryFilter(feature) {
+  //   if (feature.properties.location_start_date === "before 2019-01-01") return true
+  // };
+
+  // Pass our map layers into our layer control
+  // Add the layer control to the map
+  L.control.layers(baseMaps, overlayMaps, {
+    collapsed: false
+  }).addTo(myMap);
+}
+
+////////////////////////////////////////////////////
+
+//const crimes = "static/data/crime_2013.json"
+const crimes = "static/data/crime2013.geojson"
+d3.json(crimes).then((data) => {
+  console.log(data) //sanity check
+  //var list = data[0].Crime_Type; //.filter(equalsVal(val)); //create otu info based on val
+  var list = []
+
+  //data[0].forEach(ct=>console.log(ct.CrimeType));
+
+  console.log(list)
 });
 
-//create a filter for stores opened before 2019 (in order to correlate with crime data)
-// var dispData = L.geoJson(queryUrl, {filter: dispensaryFilter}).addTo(map);
-
-// function dispensaryFilter(feature) {
-//   if (feature.properties.location_start_date === "before 2019-01-01") return true
-// };
-
-// Pass our map layers into our layer control
-// Add the layer control to the map
-L.control.layers(baseMaps, overlayMaps, {
-  collapsed: false
-}).addTo(myMap);
-}
