@@ -5,6 +5,7 @@ const crimesQuery = "static/data/crime.geojson"
 var dispensaries = L.layerGroup();
 var crime = L.layerGroup();
 
+init();
 
 ////////////////////////////////////////////////////
 // Define map layers
@@ -50,24 +51,37 @@ var overlayMaps = {
     Crime: crime
 };
 
+
+////////////////////////////////////////////////////
+// Map disp data
 //Main function to call child functions
-function optionChanged(val) {
-    ////////////////////////////////////////////////////
-    // Map disp data
+function optionChanged(yearVal) {
+
     d3.json(dispQuery).then(function (data) {
-        var listDisp = data.features
+        // console.log(data.features)
+        
+        var y = yearVal
         // Define a function we want to run once for each feature in the features array
         function onEachFeature(feature, layer) {
             layer.bindPopup("<h3>" + feature.properties.business_name +
                 "</h3><hr><p>" + new Date(feature.properties.location_start_date) + "</p>");
         }
 
+        function yearFilter(feature) {
+            if (feature.properties.location_start_year < 2010) return true
+        }
+
+        // var listDisp = L.geoJSON(data, {filter: yearFilter});
+        // console.log(listDisp)
+
         // Create a GeoJSON layer containing the features array on the earthquakeData object
         // Add GeoJSON to the earthquakes layergroup
         L.geoJSON(data.features, {
             onEachFeature: onEachFeature
+            ,filter: yearFilter
         }).addTo(dispensaries);
     });
+
 };
 
 
@@ -143,3 +157,42 @@ function getColor(counts) {
 // };
 
 // legend.addTo(myMap);
+
+////////////////////////////////////////////////////////////////////////
+//Populates the dropdown list
+function populateDropDown() {
+    var dropdownTag = document.getElementById("selDataset");
+
+    var year = [2013, 2014, 2015, 2016, 2017, 2018, 2019];
+  
+    for (var i = 0; i < year.length; i++) {
+      var newOption = year[i];
+  
+      var el = document.createElement("option");
+      el.textContent = newOption;
+      el.value = newOption;
+  
+      dropdownTag.append(el);
+    }
+  };
+
+
+////////////////////////////////////////////////////////////////////////
+//Initializes the Dashboard
+function init(){
+    var val = 2019;
+
+    populateDropDown();
+    optionChanged(val);
+    // d3.json(samples).then((data) => {
+    //   var listDDVals = data.names; //filter the json by getting just the names tag info
+    
+    //   populateDropDown(listDDVals);
+    
+    //   const defaultVal = listDDVals[0];
+    //   //console.log(defaultVal); //sanity check
+  
+    //   //optionChanged(defaultVal)
+    // });
+  
+  }
