@@ -1,8 +1,6 @@
 //var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 const dispQuery = 'static/data/disp.geojson'
-const crimesQuery = "static/data/crime_2013.geojson"
-//"http://s3-us-west-2.amazonaws.com/boundaries.latimes.com/archive/1.0/boundary-set/la-county-law-enforcement-reporting-districts.geojson" 
-const crimeData = "static/data/crime2013.geojson"
+const crimesQuery = "static/data/crime.geojson"
 
 var dispensaries = L.layerGroup();
 var crime = L.layerGroup();
@@ -52,22 +50,25 @@ var overlayMaps = {
     Crime: crime
 };
 
+//Main function to call child functions
+function optionChanged(val) {
+    ////////////////////////////////////////////////////
+    // Map disp data
+    d3.json(dispQuery).then(function (data) {
+        var listDisp = data.features
+        // Define a function we want to run once for each feature in the features array
+        function onEachFeature(feature, layer) {
+            layer.bindPopup("<h3>" + feature.properties.business_name +
+                "</h3><hr><p>" + new Date(feature.properties.location_start_date) + "</p>");
+        }
 
-////////////////////////////////////////////////////
-// Map disp data
-d3.json(dispQuery).then(function (data) {
-    // Define a function we want to run once for each feature in the features array
-    function onEachFeature(feature, layer) {
-        layer.bindPopup("<h3>" + feature.properties.business_name +
-          "</h3><hr><p>" + new Date(feature.properties.location_start_date) + "</p>");
-      }
-      
-    // Create a GeoJSON layer containing the features array on the earthquakeData object
-    // Add GeoJSON to the earthquakes layergroup
-    L.geoJSON(data.features, {
-        onEachFeature: onEachFeature
-    }).addTo(dispensaries);
-});
+        // Create a GeoJSON layer containing the features array on the earthquakeData object
+        // Add GeoJSON to the earthquakes layergroup
+        L.geoJSON(data.features, {
+            onEachFeature: onEachFeature
+        }).addTo(dispensaries);
+    });
+};
 
 
 //////////////////////////////////////////////////
