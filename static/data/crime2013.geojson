@@ -1,0 +1,83 @@
+{
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    -118.3258,
+                    33.3427
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "crime_counts": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -118.2898,
+                    33.706
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "crime_counts": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -118.2917,
+                    33.7062
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "crime_counts": 1.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -118.2928,
+                    33.7065
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "crime_counts": 4.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -118.2939,
+                    33.707
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "crime_counts": 2.0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    -118.2907,
+                    33.707
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "crime_counts": 1.0
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}
