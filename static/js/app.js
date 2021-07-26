@@ -1,6 +1,6 @@
-//var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 const dispQuery = 'static/data/disp.geojson'
 const crimesQuery = "static/data/crime.geojson"
+const crimeTypeQuery = "static/data/crime_grouped.json"
 
 var dispensaries = L.layerGroup();
 var crime = L.layerGroup();
@@ -71,7 +71,7 @@ L.control.layers(baseMaps, overlayMaps).addTo(myMap);
 // Map disp data
 function createDisp(yearVal) {
 
-    d3.json(dispQuery).then(function(data) {
+    d3.json(dispQuery).then(function (data) {
         // console.log(data.features)
 
         // Clear layer on val change
@@ -102,8 +102,8 @@ function createDisp(yearVal) {
 
 //////////////////////////////////////////////////
 // Map crime data
-function createCrime(yearVal) {
-    d3.json(crimesQuery).then(function(data) {
+function createCrimeChoropleth(yearVal) {
+    d3.json(crimesQuery).then(function (data) {
         // Clear layer on val change
         crime.clearLayers();
 
@@ -133,11 +133,31 @@ function createCrime(yearVal) {
 }
 
 //////////////////////////////////////////////////
+// Map crime by type data
+function createCrimeGraphs(yearVal) {
+        // Fetch the JSON data and console log it
+        d3.json(crimeTypeQuery).then((data) => {
+            console.log(data);
+            var listCT = data.properties.year.filter(equalsVal(yearVal)); //create otu info based on val
+    
+            // //Populate the barchart 
+            // createBar(listCT); //OTU Bar
+        });
+}
+
+//////////////////////////////////////////////////
 // Define colors for choropleth
 function getColor(counts) {
     var color;
 
-    if (counts < 5000) { color = '#FECFCF' } else if (counts < 5500) { color = '#FE9F9F' } else if (counts < 6000) { color = '#FD504F' } else if (counts < 6500) { color = '#FD0100' } else if (counts < 7000) { color = '#b01030' } else if (counts < 7500) { color = '#9a0e2a' } else if (counts < 8000) { color = '#840c24' } else { color = '#6e0a1e' }
+    if (counts < 5000) { color = '#FECFCF' }
+    else if (counts < 5500) { color = '#FE9F9F' }
+    else if (counts < 6000) { color = '#FD504F' }
+    else if (counts < 6500) { color = '#FD0100' }
+    else if (counts < 7000) { color = '#b01030' }
+    else if (counts < 7500) { color = '#9a0e2a' }
+    else if (counts < 8000) { color = '#840c24' }
+    else { color = '#6e0a1e' }
 
     return color;
 }
@@ -149,7 +169,7 @@ function getColor(counts) {
 var legend = L.control({ position: "bottomright" });
 
 // When the layer control is added, insert a div with the class of "legend"
-legend.onAdd = function() {
+legend.onAdd = function () {
     var div = L.DomUtil.create("div", "legend");
     categories = ['-10—9', '10—29', '30—49', '50—69', '70—89', '90+'];
 
@@ -168,18 +188,6 @@ legend.addTo(myMap);
 ////////////////////////////////////////////////////
 //Populates the dropdown list
 function populateDropDown(year) {
-    // var dropdownTag = document.getElementById("selDataset");
-
-    // for (var i = 0; i < year.length; i++) {
-    //     var newOption = year[i];
-
-    //     var el = document.createElement("option");
-    //     el.textContent = newOption;
-    //     el.value = newOption;
-
-    //     dropdownTag.append(el);
-    // }
-
     var radioTag = document.getElementById("control");
 
     for (var i = 0; i < year.length; i++) {
@@ -220,6 +228,45 @@ function populateDropDown(year) {
 
 
 ////////////////////////////////////////////////////
+// Create bar chart
+function createBar(list) {
+    //Create the Traces
+    const n = 10
+    var otuIds = list.map(rec => rec.otu_ids);
+    var sampleVals = list.map(rec => rec.sample_values);
+    var otuLabels = list.map(rec => rec.otu_labels);
+  
+    var xaxis = sampleVals.flat().slice(0, n) //adding flat() since there is a nested array
+    var yaxis = otuIds.flat().map(id => `OTU ${id}`).slice(0, n) //appending a literal
+    var text = otuLabels.flat().slice(0, n)
+  
+    // console.log(xaxis); //sanity check
+    // console.log(yaxis); //sanity check
+    // console.log(text) //sanity check
+  
+    var trace = {
+      x: xaxis,
+      y: yaxis,
+      text: text,
+      type: "bar",
+      orientation: "h",
+    };
+  
+    // Create the data array for the plot
+    var data = [trace];
+  
+    // Define the plot layout
+    var layout = {
+      title: "Top Ten Bacteria Cultures Found",
+      barmode: "stack",
+      yaxis: { autorange: 'reversed' }
+    };
+  
+    // Plot the chart to a div tag with id "plot"
+    Plotly.newPlot("barchart", data, layout);
+  }
+
+////////////////////////////////////////////////////
 //Initializes the Dashboard
 function init() {
     var val = 2019;
@@ -248,7 +295,8 @@ function init() {
 function optionChanged(val) {
     if (isNaN(val) == false) {
         createDisp(val);
-        createCrime(val);
+        createCrimeChoropleth(val);
+        createCrimeGraphs(val);
     } else { autoRun() }
 }
 
