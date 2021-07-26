@@ -11,6 +11,7 @@ Dispensary Data Set 2: https://search.cannabis.ca.gov <br>
 Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about <br>
 
 **ETL: Crime Data** <br>
+• Contains 1,176,531 incidents of crime <br>
 •	Imported as CSV from Los Angeles City <br>
 •	Stripped out rows missing location coordinates <br>
 •	Deleted columns not needed for analysis <br>
@@ -22,6 +23,7 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 •	Exported data into JSON files <br>
 
 **ETL: Dispensary Data** <br>
+•	Contains 420 dispensaries located in Los Angeles City <br>
 •	Deleted known non-commercial retail facilities (i.e., cultivation locations) <br>
 •	Stripped out businesses missing location coordinates <br>
 •	Manually examined data for locations with matching addresses or coordinates <br>
