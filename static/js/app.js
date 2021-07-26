@@ -1,6 +1,7 @@
 //var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 const dispQuery = 'static/data/disp.geojson'
 const crimesQuery = "static/data/crime.geojson"
+const crimeTypeQuery = ""
 
 var dispensaries = L.layerGroup();
 var crime = L.layerGroup();
