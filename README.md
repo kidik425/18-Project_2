@@ -39,5 +39,10 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 **Future Improvements/Plans** <br>
 •	A vetted, 100% accurate source of retail dispensary locations <br>
 
+**Programs/Libraries Used** <br>
+•	Pandas <br>
+•	Java Script <br>
+•	Leaflet/Mapbox <br>
+•	HTML/CSS <br>
 
 
