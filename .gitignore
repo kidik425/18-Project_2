@@ -3,3 +3,5 @@ config.js
 .ipynb_checkpoints
 
 .DS_Store
+
+./static/js/API_KEY.js
