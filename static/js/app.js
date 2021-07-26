@@ -176,10 +176,8 @@ legend.addTo(myMap);
 
 ////////////////////////////////////////////////////
 //Populates the dropdown list
-function populateDropDown() {
+function populateDropDown(year) {
     // var dropdownTag = document.getElementById("selDataset");
-
-    // var year = [2019, 2018, 2017, 2016, 2015, 2014, 2013];
 
     // for (var i = 0; i < year.length; i++) {
     //     var newOption = year[i];
@@ -192,8 +190,6 @@ function populateDropDown() {
     // }
 
     var radioTag = document.getElementById("control");
-
-    var year = [2019, 2018, 2017, 2016, 2015, 2014, 2013];
 
     for (var i = 0; i < year.length; i++) {
         var newRadio = year[i];
@@ -229,7 +225,9 @@ function populateDropDown() {
 function init() {
     var val = 2019;
 
-    populateDropDown();
+    var year = [2019, 2018, 2017, 2016, 2015, 2014, 2013];
+
+    populateDropDown(year);
     optionChanged(val);
 
 
@@ -255,6 +253,6 @@ function optionChanged(val) {
 }
 
 
-function autoRun(
-    
-)
+function autoRun() {
+
+}
