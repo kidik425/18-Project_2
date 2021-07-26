@@ -1,20 +1,20 @@
 ////////////////////////////////////////////////////////////////////////
 //create bar
-const crimes = "static/data/crime_2013.json"
+const crimes = "static/data/crime_grouped.json"
 
-function optionChanged(val) {
-  // Fetch the JSON data and console log it
-  d3.json(samples).then((data) => {
-    var listOTU = data.samples.filter(equalsVal(val)); //create otu info based on val
-    // console.log(listMetaData); //sanity check
-    // console.log(listOTU); //sanity check
+// function optionChanged(val) {
+//   // Fetch the JSON data and console log it
+//   d3.json(samples).then((data) => {
+//     var listOTU = data.samples.filter(equalsVal(val)); //create otu info based on val
+//     // console.log(listMetaData); //sanity check
+//     // console.log(listOTU); //sanity check
 
-    //Populate the barchart 
-    populateBar(listOTU); //OTU Bar
-  });
-};
+//     //Populate the barchart 
+//     populateBar(listOTU); //OTU Bar
+//   });
+// };
 
-function populateBar(list) {
+function createBar(list) {
     //Create the Traces
     const n = 10
     var otuIds = list.map(rec => rec.otu_ids);
