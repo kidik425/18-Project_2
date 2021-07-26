@@ -15,7 +15,7 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 •	Imported as CSV from Los Angeles City <br>
 •	Stripped out rows missing location coordinates <br>
 •	Deleted columns not needed for analysis <br>
-•	Deleted rows with crimes that are domestic in nature, related to employee theft, moving violations, or clearly non-violent <br>
+•	Deleted rows with crimes clearly domestic in nature, related to employee theft, moving violations, or clearly non-violent <br>
 •	Created new variable for year of occurrence <br>
 •	Grouped weapon used data into smaller categories <br>
 •	Grouped premise type data into smaller categories <br>
@@ -30,7 +30,7 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 •	Dispensary data correlates with Choropleth maps to exclude non-Los Angeles City locations <br>
 
 **Geographic Area** <br>
-•	Geographic areas are Los Angeles Police Deparment (LAPD) "Community Polce Station" area: the LAPD has 21 Community Police Station areas <br>
+•	Geographic areas are Los Angeles Police Deparment (LAPD) "Community Police Station" area: the LAPD has 21 Community Police Station areas <br>
 
 **Challenges** <br>
 •	Could not find a solid single source for dispensary location data - all sources had some data, but no central "source of truth"  <br>
@@ -39,5 +39,10 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 **Future Improvements/Plans** <br>
 •	A vetted, 100% accurate source of retail dispensary locations <br>
 
+**Programs/Libraries Used** <br>
+•	Pandas <br>
+•	Java Script <br>
+•	Leaflet/Mapbox <br>
+•	HTML/CSS <br>
 
 
