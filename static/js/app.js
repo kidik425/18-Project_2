@@ -38,9 +38,9 @@ var grayscalemap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/
 ////////////////////////////////////////////////////
 // Define a baseMaps object to hold our base layers
 var baseMaps = {
-    "Grayscale": grayscalemap
-    ,"Street": streetmap
-    ,"Dark": darkmap
+    "Grayscale": grayscalemap,
+    "Street": streetmap,
+    "Dark": darkmap
 };
 
 
@@ -57,9 +57,7 @@ var overlayMaps = {
 var myMap = L.map("map", {
     center: [34.0522, -118.357],
     zoom: 9.5,
-    layers: [grayscalemap
-            , dispensaries
-            , crime] //ORDERING THIS SO THAT THE TOOLTIPS WORK
+    layers: [grayscalemap, dispensaries, crime] //ORDERING THIS SO THAT THE TOOLTIPS WORK
 });
 
 ////////////////////////////////////////////////////
@@ -73,7 +71,7 @@ L.control.layers(baseMaps, overlayMaps).addTo(myMap);
 // Map disp data
 function createDisp(yearVal) {
 
-    d3.json(dispQuery).then(function (data) {
+    d3.json(dispQuery).then(function(data) {
         // console.log(data.features)
 
         // Clear layer on val change
@@ -82,7 +80,7 @@ function createDisp(yearVal) {
         // Define a function we want to run once for each feature in the features array
         function onEachFeature(feature, layer) {
             layer.bindPopup("<h3>" + feature.properties.business_name +
-                "</h3><hr><p>" + new Date(feature.properties.location_start_date) + 
+                "</h3><hr><p>" + new Date(feature.properties.location_start_date) +
                 "</p><p>" + feature.properties.street_address + "</p>");
         }
 
@@ -94,8 +92,8 @@ function createDisp(yearVal) {
         // Create a GeoJSON layer containing the features array on the earthquakeData object
         // Add GeoJSON to the earthquakes layergroup
         L.geoJSON(data.features, {
-            onEachFeature: onEachFeature
-            , filter: yearFilter
+            onEachFeature: onEachFeature,
+            filter: yearFilter
         }).addTo(dispensaries);
     });
 
@@ -105,7 +103,7 @@ function createDisp(yearVal) {
 //////////////////////////////////////////////////
 // Map crime data
 function createCrime(yearVal) {
-    d3.json(crimesQuery).then(function (data) {
+    d3.json(crimesQuery).then(function(data) {
         // Clear layer on val change
         crime.clearLayers();
 
@@ -126,9 +124,9 @@ function createCrime(yearVal) {
         }
 
         // Add crimes GeoJSON to the techtonics layergroup
-        L.geoJSON(data.features, { 
-            style: style
-            , filter: filter 
+        L.geoJSON(data.features, {
+            style: style,
+            filter: filter
         }).addTo(crime)
 
     });
@@ -139,14 +137,7 @@ function createCrime(yearVal) {
 function getColor(counts) {
     var color;
 
-    if (counts < 5000) { color = '#FECFCF' }
-    else if (counts < 5500) { color = '#FE9F9F' }
-    else if (counts < 6000) { color = '#FD504F'  }
-    else if (counts < 6500) { color = '#FD0100' }
-    else if (counts < 7000) { color = '#b01030' }
-    else if (counts < 7500) { color = '#9a0e2a' }
-    else if (counts < 8000) { color = '#840c24'}
-    else { color = '#6e0a1e' }
+    if (counts < 5000) { color = '#FECFCF' } else if (counts < 5500) { color = '#FE9F9F' } else if (counts < 6000) { color = '#FD504F' } else if (counts < 6500) { color = '#FD0100' } else if (counts < 7000) { color = '#b01030' } else if (counts < 7500) { color = '#9a0e2a' } else if (counts < 8000) { color = '#840c24' } else { color = '#6e0a1e' }
 
     return color;
 }
@@ -158,7 +149,7 @@ function getColor(counts) {
 var legend = L.control({ position: "bottomright" });
 
 // When the layer control is added, insert a div with the class of "legend"
-legend.onAdd = function () {
+legend.onAdd = function() {
     var div = L.DomUtil.create("div", "legend");
     categories = ['-10—9', '10—29', '30—49', '50—69', '70—89', '90+'];
 
@@ -195,28 +186,36 @@ function populateDropDown(year) {
         var newRadio = year[i];
 
         // Create inputs for label
-        var inp =document.createElement("input")
+        var inp = document.createElement("input")
+        inp.setAttribute("class", "form-check-input");
         inp.type = "radio";
         inp.id = newRadio;
         inp.name = "year";
         inp.value = newRadio;
-        inp.setAttribute("onchange","optionChanged(this.value)");
+        inp.setAttribute("onchange", "optionChanged(this.value)");
 
         // Add a default checked box to the first option selected
-        if (i==0){inp.setAttribute("checked","checked")}
+        if (i == 0) { inp.setAttribute("checked", "checked") }
+
+        // Add column dividers for the radio buttons
+        var div = document.createElement("div");
+        div.setAttribute("class", "form-check form-check-inline")
+        radioTag.append(div);
 
         // Add new radio to control tag
-        radioTag.append(inp);
+        //radioTag.append(inp);
+        div.append(inp);
 
         // Create label for the radio
-        var lb = document.createElement("label")
-        lb.setAttribute("for", newRadio)
-        lb.textContent = newRadio
+        var lb = document.createElement("label");
+        lb.setAttribute("class", "form-check-label");
+        lb.setAttribute("for", newRadio);
+        lb.textContent = newRadio;
 
         // Add input to the control tag
-        radioTag.append(lb);    
+        div.append(lb);
     }
-    
+
 };
 
 
@@ -225,7 +224,7 @@ function populateDropDown(year) {
 function init() {
     var val = 2019;
 
-    var year = [2019, 2018, 2017, 2016, 2015, 2014, 2013];
+    var year = [2019, 2018, 2017, 2016, 2015, 2014, 2013, "Time Lapse"];
 
     populateDropDown(year);
     optionChanged(val);
@@ -247,12 +246,13 @@ function init() {
 ////////////////////////////////////////////////////
 //Captures on change values
 function optionChanged(val) {
-    console.log(val);
-    createDisp(val);
-    createCrime(val);
+    if (isNaN(val) == false) {
+        createDisp(val);
+        createCrime(val);
+    } else { autoRun() }
 }
 
 
 function autoRun() {
-
+    optionChanged(val);
 }
