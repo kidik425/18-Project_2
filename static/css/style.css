@@ -63,6 +63,7 @@ html {
   right: 43.5%;
   font-size: 15px;
 }
+
 .legend .fourth {
   position: absolute;
   right: 27.5%;
@@ -89,4 +90,10 @@ input[type="radio" ] {
   margin: 0 10px 0 10px;
   padding: initial;
   border: initial;
+}
+
+/* footer */
+footer {
+  position: absolute;
+  bottom: 1 rem;
 }
