@@ -15,7 +15,7 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 •	Imported as CSV from Los Angeles City <br>
 •	Stripped out rows missing location coordinates <br>
 •	Deleted columns not needed for analysis <br>
-•	Deleted rows with crimes clearly domestic in nature, related to employee theft, moving violations, or clearly non-violent <br>
+•	Deleted rows with crimes clearly domestic in nature, employee theft, moving violations, or clearly non-violent <br>
 •	Created new variable for year of occurrence <br>
 •	Grouped weapon used data into smaller categories <br>
 •	Grouped premise type data into smaller categories <br>
