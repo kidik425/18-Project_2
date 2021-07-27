@@ -11,7 +11,7 @@ Dispensary Data Set 2: https://search.cannabis.ca.gov <br>
 Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about <br>
 
 **ETL: Crime Data** <br>
-• Contains **1,176,531** incidents of crime <br>
+• Narrowed down to violent crimes; final dataset contains **996,161** incidents of crime <br>
 •	Imported as CSV from Los Angeles City <br>
 •	Stripped out rows missing location coordinates <br>
 •	Deleted columns not needed for analysis <br>
@@ -43,4 +43,12 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 •	Leaflet/Mapbox <br>
 •	HTML/CSS <br>
 •	Plotly <br>
+•	GeoPandas <br>
+•	GeoJSON <br>
+•	Bootstrap <br>
 
+**If Changes Need to Be Made (complicated due to CSV files being too big for Git Hub** <br>
+•	On Marc's local machine, re-run "Project_2.ipynb" and "crime_list.ipynb" <br>
+•	Copy/paste/add to actual repo and then upload the following to the static/data folder: the JSON files for 2013-2019, "crime_grouped.json" <br>
+•	Copy/paste/add to actual repo and then upload the following to the ETL folder: "project_2.ipynb" and "crime_list.ipynb" <br>
+•	In the repo's ETL folder: open and re-run "choropleth" <br>

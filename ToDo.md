@@ -7,7 +7,7 @@
 * Bar by Crime Type <br>
 
 <h2>  CrimeType Year Over Year Chart  </h2>
-* Scatter Crimes/Types by Year (does not use the time change) <br> MARC AND DREW WILL DO THIS.  STEVE DO NOT DO THIS. <br>
+* Make it so that when the bottom chart changes to a specific crime type, the title shows that crime type <br>
 
 
 <h2> General  </h2>
