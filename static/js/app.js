@@ -174,7 +174,7 @@ function createCrimeYearGraph(crimeVal) {
 
     d3.json(crimeTypeQuery).then((data) => {
 
-        // // console.log(data.length);
+        console.log(data);
         // for (var i = 0; i < data.length; i++) {
         //     if (data[i].Crime_Type == crimeVal) {
         //         listCTY.push(data[i]);
@@ -313,8 +313,10 @@ var legend = L.control({ position: "bottomright" });
         var crimeCounts = list.map(rec => rec.Crime_Counts);
         var crimeYear = list.map(rec => rec.Year);
 
-        var xaxis = crimeYear.flat().slice(0, n) //adding flat() since there is a nested array
-        var yaxis = crimeCounts.flat().slice(0, n) //appending a literal
+console.log(crimeYear)
+        
+        var xaxis = crimeYear//.flat().slice(0, n) //adding flat() since there is a nested array
+        var yaxis = crimeCounts//.flat() //appending a literal
         var text = crimeYear.flat().slice(0, n)
 
         // console.log(xaxis); //sanity check
@@ -325,7 +327,7 @@ var legend = L.control({ position: "bottomright" });
             x: xaxis,
             y: yaxis,
             text: text,
-            type: "plot"
+            type: "bar"
         };
 
         // Create the data array for the plot
@@ -333,8 +335,7 @@ var legend = L.control({ position: "bottomright" });
 
         // Define the plot layout
         var layout = {
-            title: "Crime Types Year Over Year",
-            barmode: "stack"
+            title: "Crime Types Year Over Year"
         };
 
         // Plot the chart to a div tag with id "plot"
