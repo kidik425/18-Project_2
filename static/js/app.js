@@ -162,8 +162,47 @@ function createCrimeGraph(yearVal) {
             }
         }
 
-        //Populate the barchart 
-        createBar(listCT);
+        /////        // //Populate the barchart 
+        /////        // createBar(listCT);
+        const n = 10
+        var crimeCounts = listCT.map(rec => rec.Crime_Counts);
+        var crimeType = listCT.map(rec => rec.Crime_Type);
+
+        var xaxis = crimeType.flat().slice(0, n) //adding flat() since there is a nested array
+        var yaxis = crimeCounts.flat().slice(0, n) //appending a literal
+        var text = crimeType.flat().slice(0, n)
+
+        var trace = {
+            x: xaxis,
+            y: yaxis,
+            text: text,
+            type: "bar"
+        };
+
+        // Create the data array for the plot
+        var data = [trace];
+
+        // Define the plot layout
+        var layout = {
+            title: "Crime Types",
+            //barmode: "stack",
+            height: 350
+        };
+
+        // Plot the chart to a div tag with id "plot"
+        Plotly.newPlot("barchart", data, layout);
+
+        var myPlot = document.getElementById('barchart');
+
+        myPlot.on('plotly_hover', function (data) {
+            ct = data.points[0].text;
+            createCrimeYearGraph(ct)
+        });
+
+        myPlot.on('plotly_unhover', function (data) {
+            ct = data.points[0].text;
+            createCrimeYearGraph("")
+        });
     });
 }
 
@@ -176,26 +215,27 @@ function createCrimeYearGraph(crimeVal) {
 
     d3.json(crimeTypeQuery).then((data) => {
 
-        var dataRollUp = d3.nest()
-                    .key(function(d) {return d.Year})
-                    .rollup(function(v) { return d3.sum(v, function(d) { return d.Crime_Counts; }); })
-                    .entries(data)
-                    .map(function(d) {
-                        return {Year: d.key, Counts: d.value}
-                       });;
-        console.log(dataRollUp);
+        if (crimeVal) 
+        {  
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].Crime_Type == crimeVal) {
+                    listCTY.push(data[i]);
+                }
+            }
+        }
+        else 
+        {listCTY = data}
 
-        // var dataList = dataRollUp
-        
-        
-        // for (var i = 0; i < data.length; i++) {
-        //     if (data[i].Crime_Type == crimeVal) {
-        //         listCTY.push(data[i]);
-        //     }
-        // }
+        var dataRollUp = d3.nest()
+            .key(function (d) { return d.Year })
+            .rollup(function (v) { return d3.sum(v, function (d) { return d.Crime_Counts; }); })
+            .entries(listCTY)
+            .map(function (d) {
+                return { Year: d.key, Counts: d.value }
+            });
 
         // Populate the barchart 
-        createCrimeChart(dataRollUp);
+        createCrimeChart(dataRollUp, crimeVal);
     });
 }
 
@@ -261,59 +301,18 @@ function populateDropDown(year) {
 
 
 ////////////////////////////////////////////////////
-// Create bar chart
-function createBar(list) {
-    //Create the Traces
-    const n = 10
-    var crimeCounts = list.map(rec => rec.Crime_Counts);
-    var crimeType = list.map(rec => rec.Crime_Type);
-
-    var xaxis = crimeType.flat().slice(0, n) //adding flat() since there is a nested array
-    var yaxis = crimeCounts.flat().slice(0, n) //appending a literal
-    var text = crimeType.flat().slice(0, n)
-
-    // console.log(xaxis); //sanity check
-    // console.log(yaxis); //sanity check
-    // console.log(text) //sanity check
-
-    var trace = {
-        x: xaxis,
-        y: yaxis,
-        text: text,
-        type: "bar"
-    };
-
-    // Create the data array for the plot
-    var data = [trace];
-
-    // Define the plot layout
-    var layout = {
-        title: "Crime Types",
-        barmode: "stack"
-    };
-
-    // Plot the chart to a div tag with id "plot"
-    Plotly.newPlot("barchart", data, layout);
-}
-
-
-////////////////////////////////////////////////////
 // Create time series chart
-function createCrimeChart(list) {
+function createCrimeChart(list, name) {
     //Create the Traces
     const n = 10
     var crimeCounts = list.map(rec => rec.Counts);
     var crimeYear = list.map(rec => rec.Year);
 
-    console.log(crimeYear)
+    var title = `${name} Year Over Year`;
 
-    var xaxis = crimeYear//.flat().slice(0, n) //adding flat() since there is a nested array
-    var yaxis = crimeCounts//.flat() //appending a literal
+    var xaxis = crimeYear
+    var yaxis = crimeCounts
     var text = crimeYear.flat().slice(0, n)
-
-    // console.log(xaxis); //sanity check
-    // console.log(yaxis); //sanity check
-    // console.log(text) //sanity check
 
     var trace = {
         x: xaxis,
@@ -327,7 +326,8 @@ function createCrimeChart(list) {
 
     // Define the plot layout
     var layout = {
-        title: "Crime Types Year Over Year"
+        title: title,
+        height: 300
     };
 
     // Plot the chart to a div tag with id "plot"
@@ -340,22 +340,22 @@ function createCrimeChart(list) {
 // Create a legend to display information about our map
 var legend = L.control({ position: "bottomright" });
 
-    // When the layer control is added, insert a div with the class of "legend"
-    legend.onAdd = function () {
-        var div = L.DomUtil.create("div", "legend");
-        categories = ['-10—9', '10—29', '30—49', '50—69', '70—89', '90+'];
+// When the layer control is added, insert a div with the class of "legend"
+legend.onAdd = function () {
+    var div = L.DomUtil.create("div", "legend");
+    categories = ['-10—9', '10—29', '30—49', '50—69', '70—89', '90+'];
 
-        div.innerHTML += '';
-        for (var i = 0; i < categories.length; i++) {
-            div.innerHTML +=
-                '<i style="background:' + getColor(categories[i]) + '"></i> ' +
-                (categories[i] ? categories[i] + '<br>' : '+');
-        }
+    div.innerHTML += '';
+    for (var i = 0; i < categories.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(categories[i]) + '"></i> ' +
+            (categories[i] ? categories[i] + '<br>' : '+');
+    }
 
-        return div;
-    };
+    return div;
+};
 
-    legend.addTo(myMap);
+legend.addTo(myMap);
 
 
 ////////////////////////////////////////////////////
@@ -374,16 +374,17 @@ function init() {
 ////////////////////////////////////////////////////
 //Captures on change values
 function optionChanged(val) {
-    crimeVal = ""
+    var crimeVal = "";
+    var crimeType ="";
+
     if (isNaN(val) == false) {
         createDisp(val);
         createCrimeChoropleth(val);
         createCrimeGraph(val);
     } else { autoRun() }
 
-    createCrimeYearGraph(crimeVal);
+    createCrimeYearGraph(crimeVal, crimeType);
 }
-
 
 function autoRun() {
     optionChanged(val);
