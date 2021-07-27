@@ -176,15 +176,26 @@ function createCrimeYearGraph(crimeVal) {
 
     d3.json(crimeTypeQuery).then((data) => {
 
-        console.log(data);
+        var dataRollUp = d3.nest()
+                    .key(function(d) {return d.Year})
+                    .rollup(function(v) { return d3.sum(v, function(d) { return d.Crime_Counts; }); })
+                    .entries(data)
+                    .map(function(d) {
+                        return {Year: d.key, Counts: d.value}
+                       });;
+        console.log(dataRollUp);
+
+        // var dataList = dataRollUp
+        
+        
         // for (var i = 0; i < data.length; i++) {
         //     if (data[i].Crime_Type == crimeVal) {
         //         listCTY.push(data[i]);
         //     }
         // }
 
-        //Populate the barchart 
-        createCrimeChart(data);
+        // Populate the barchart 
+        createCrimeChart(dataRollUp);
     });
 }
 
@@ -291,7 +302,7 @@ function createBar(list) {
 function createCrimeChart(list) {
     //Create the Traces
     const n = 10
-    var crimeCounts = list.map(rec => rec.Crime_Counts);
+    var crimeCounts = list.map(rec => rec.Counts);
     var crimeYear = list.map(rec => rec.Year);
 
     console.log(crimeYear)
@@ -308,7 +319,7 @@ function createCrimeChart(list) {
         x: xaxis,
         y: yaxis,
         text: text,
-        type: "bar"
+        type: "line"
     };
 
     // Create the data array for the plot
