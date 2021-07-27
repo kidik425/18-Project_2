@@ -11,7 +11,7 @@ Dispensary Data Set 2: https://search.cannabis.ca.gov <br>
 Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about <br>
 
 **ETL: Crime Data** <br>
-• Contains **1,176,531** incidents of crime <br>
+• Narrowed down to violent crimes; final dataset contains **996,161** incidents of crime <br>
 •	Imported as CSV from Los Angeles City <br>
 •	Stripped out rows missing location coordinates <br>
 •	Deleted columns not needed for analysis <br>
