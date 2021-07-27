@@ -96,19 +96,18 @@ h1 {
 .chart{
   float: right;
   position: relative;
-  margin-bottom: 5px;
-  padding-bottom: 135px;
-  height: 450px; 
+  margin: 0px;
+  padding: 0px;
+  height: auto; 
 } 
 
 /* Bottom chart on right side of page */
 .chart2{
   float: right;
   position: relative;
-  margin-top: 5px;
-  padding-top: 0px;
-  padding-bottom: 135px;
-  height: 450px; 
+  margin-top: 0px;
+  padding: 0px;
+  height: auto; 
 } 
 
 
