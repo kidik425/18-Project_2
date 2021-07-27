@@ -81,16 +81,6 @@ h1 {
   text-align: center;
 }
 
-input[type="radio" ] {
-  align: left;
-  background-color: initial;
-  cursor: default;
-  appearance: auto;
-  box-sizing: border-box;
-  margin: 0 10px 0 10px;
-  padding: initial;
-  border: initial;
-}
 
 /* footer */
 .footer {
