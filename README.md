@@ -11,20 +11,18 @@ Dispensary Data Set 2: https://search.cannabis.ca.gov <br>
 Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about <br>
 
 **ETL: Crime Data** <br>
-• Contains 1,176,531 incidents of crime <br>
+• Contains **1,176,531** incidents of crime <br>
 •	Imported as CSV from Los Angeles City <br>
 •	Stripped out rows missing location coordinates <br>
 •	Deleted columns not needed for analysis <br>
 •	Deleted rows with crimes clearly domestic in nature, employee theft, moving violations, or clearly non-violent <br>
 •	Created new variable for year of occurrence <br>
-•	Grouped weapon used data into smaller categories <br>
-•	Grouped premise type data into smaller categories <br>
-•	Grouped crime type data into smaller categories <br>
-•	Exported data into JSON files <br>
+•	Grouped weapon used, premise of crimee, and crime type into smaller categories <br>
+•	Exported data into GEOJSON file <br>
 
 **ETL: Dispensary Data** <br>
-•	Contains 420 dispensaries located in Los Angeles City <br>
-•	Deleted known non-commercial retail facilities (i.e., cultivation locations) <br>
+•	Contains **420** dispensaries located in Los Angeles City <br>
+•	Deleted _known_ non-commercial retail facilities (i.e., cultivation locations) <br>
 •	Stripped out businesses missing location coordinates <br>
 •	Manually examined data for locations with matching addresses or coordinates <br>
 •	Dispensary data correlates with Choropleth maps to exclude non-Los Angeles City locations <br>
@@ -33,7 +31,7 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 •	Geographic areas are Los Angeles Police Deparment (LAPD) "Community Police Station" area: the LAPD has 21 Community Police Station areas <br>
 
 **Challenges** <br>
-•	Could not find a solid single source for dispensary location data - all sources had some data, but no central "source of truth"  <br>
+•	Could not find a _solid single source_ for dispensary location data - all sources had some data, but no central "source of truth"  <br>
 •	Contacted CA Bureau of Cannabis Control who sent a website that we had already used  <br>
 
 **Future Improvements/Plans** <br>
