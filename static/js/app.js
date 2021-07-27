@@ -134,33 +134,60 @@ function createCrimeChoropleth(yearVal) {
 
 //////////////////////////////////////////////////
 // Map crime by type data
-function createCrimeGraphs(yearVal) {
-        // Fetch the JSON data and console log it
-        d3.json(crimeTypeQuery).then((data) => {
-            console.log(data);
-            var listCT = data.properties.year.filter(equalsVal(yearVal)); //create otu info based on val
-    
-            // //Populate the barchart 
-            // createBar(listCT); //OTU Bar
-        });
+function createCrimeGraph(yearVal) {
+    // Fetch the JSON data and console log it
+    var listCT = [];
+
+    d3.json(crimeTypeQuery).then((data) => {
+
+        // console.log(data.length);
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].Year == yearVal) {
+                listCT.push(data[i]);
+            }
+        }
+
+        //Populate the barchart 
+        createBar(listCT);
+    });
+}
+
+//////////////////////////////////////////////////
+// Map crime by year data
+function createCrimeYearGraph(crimeVal) {
+    // Fetch the JSON data and console log it
+    var listCTY = [];
+
+    d3.json(crimeTypeQuery).then((data) => {
+
+        // // console.log(data.length);
+        // for (var i = 0; i < data.length; i++) {
+        //     if (data[i].Crime_Type == crimeVal) {
+        //         listCTY.push(data[i]);
+        //     }
+        // }
+
+        //Populate the barchart 
+        createCrimeChart(listCTY);
+    });
 }
 
 //////////////////////////////////////////////////
 // Define colors for choropleth
 function getColor(counts) {
-    var color;
+            var color;
 
-    if (counts < 5000) { color = '#FECFCF' }
-    else if (counts < 5500) { color = '#FE9F9F' }
-    else if (counts < 6000) { color = '#FD504F' }
-    else if (counts < 6500) { color = '#FD0100' }
-    else if (counts < 7000) { color = '#b01030' }
-    else if (counts < 7500) { color = '#9a0e2a' }
-    else if (counts < 8000) { color = '#840c24' }
-    else { color = '#6e0a1e' }
+            if (counts < 5000) { color = '#FECFCF' }
+            else if (counts < 5500) { color = '#FE9F9F' }
+            else if (counts < 6000) { color = '#FD504F' }
+            else if (counts < 6500) { color = '#FD0100' }
+            else if (counts < 7000) { color = '#b01030' }
+            else if (counts < 7500) { color = '#9a0e2a' }
+            else if (counts < 8000) { color = '#840c24' }
+            else { color = '#6e0a1e' }
 
-    return color;
-}
+            return color;
+        }
 
 
 //////////////////////////////////////////////////
@@ -168,139 +195,175 @@ function getColor(counts) {
 // Create a legend to display information about our map
 var legend = L.control({ position: "bottomright" });
 
-// When the layer control is added, insert a div with the class of "legend"
-legend.onAdd = function () {
-    var div = L.DomUtil.create("div", "legend");
-    categories = ['-10—9', '10—29', '30—49', '50—69', '70—89', '90+'];
+    // When the layer control is added, insert a div with the class of "legend"
+    legend.onAdd = function () {
+        var div = L.DomUtil.create("div", "legend");
+        categories = ['-10—9', '10—29', '30—49', '50—69', '70—89', '90+'];
 
-    div.innerHTML += '';
-    for (var i = 0; i < categories.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColor(categories[i]) + '"></i> ' +
-            (categories[i] ? categories[i] + '<br>' : '+');
+        div.innerHTML += '';
+        for (var i = 0; i < categories.length; i++) {
+            div.innerHTML +=
+                '<i style="background:' + getColor(categories[i]) + '"></i> ' +
+                (categories[i] ? categories[i] + '<br>' : '+');
+        }
+
+        return div;
+    };
+
+    legend.addTo(myMap);
+
+    ////////////////////////////////////////////////////
+    //Populates the dropdown list
+    function populateDropDown(year) {
+        var radioTag = document.getElementById("control");
+
+        for (var i = 0; i < year.length; i++) {
+            var newRadio = year[i];
+
+            // Create inputs for label
+            var inp = document.createElement("input")
+            inp.setAttribute("class", "form-check-input");
+            inp.type = "radio";
+            inp.id = newRadio;
+            inp.name = "year";
+            inp.value = newRadio;
+            inp.setAttribute("onchange", "optionChanged(this.value)");
+
+            // Add a default checked box to the first option selected
+            if (i == 0) { inp.setAttribute("checked", "checked") }
+
+            // Add column dividers for the radio buttons
+            var div = document.createElement("div");
+            div.setAttribute("class", "form-check form-check-inline")
+            radioTag.append(div);
+
+            // Add new radio to control tag
+            //radioTag.append(inp);
+            div.append(inp);
+
+            // Create label for the radio
+            var lb = document.createElement("label");
+            lb.setAttribute("class", "form-check-label");
+            lb.setAttribute("for", newRadio);
+            lb.textContent = newRadio;
+
+            // Add input to the control tag
+            div.append(lb);
+        }
+
+    };
+
+
+    ////////////////////////////////////////////////////
+    // Create bar chart
+    function createBar(list) {
+        //Create the Traces
+        const n = 10
+        var crimeCounts = list.map(rec => rec.Crime_Counts);
+        var crimeType = list.map(rec => rec.Crime_Type);
+
+        var xaxis = crimeType.flat().slice(0, n) //adding flat() since there is a nested array
+        var yaxis = crimeCounts.flat().slice(0, n) //appending a literal
+        var text = crimeType.flat().slice(0, n)
+
+        // console.log(xaxis); //sanity check
+        // console.log(yaxis); //sanity check
+        // console.log(text) //sanity check
+
+        var trace = {
+            x: xaxis,
+            y: yaxis,
+            text: text,
+            type: "bar"
+        };
+
+        // Create the data array for the plot
+        var data = [trace];
+
+        // Define the plot layout
+        var layout = {
+            title: "Crime Types",
+            barmode: "stack"
+        };
+
+        // Plot the chart to a div tag with id "plot"
+        Plotly.newPlot("barchart", data, layout);
     }
 
-    return div;
-};
 
-legend.addTo(myMap);
+    ////////////////////////////////////////////////////
+    // Create time series chart
+    function createCrimeChart(list) {
+        //Create the Traces
+        const n = 10
+        var crimeCounts = list.map(rec => rec.Crime_Counts);
+        var crimeYear = list.map(rec => rec.Year);
 
-////////////////////////////////////////////////////
-//Populates the dropdown list
-function populateDropDown(year) {
-    var radioTag = document.getElementById("control");
+        var xaxis = crimeYear.flat().slice(0, n) //adding flat() since there is a nested array
+        var yaxis = crimeCounts.flat().slice(0, n) //appending a literal
+        var text = crimeYear.flat().slice(0, n)
 
-    for (var i = 0; i < year.length; i++) {
-        var newRadio = year[i];
+        // console.log(xaxis); //sanity check
+        // console.log(yaxis); //sanity check
+        // console.log(text) //sanity check
 
-        // Create inputs for label
-        var inp = document.createElement("input")
-        inp.setAttribute("class", "form-check-input");
-        inp.type = "radio";
-        inp.id = newRadio;
-        inp.name = "year";
-        inp.value = newRadio;
-        inp.setAttribute("onchange", "optionChanged(this.value)");
+        var trace = {
+            x: xaxis,
+            y: yaxis,
+            text: text,
+            type: "plot"
+        };
 
-        // Add a default checked box to the first option selected
-        if (i == 0) { inp.setAttribute("checked", "checked") }
+        // Create the data array for the plot
+        var data = [trace];
 
-        // Add column dividers for the radio buttons
-        var div = document.createElement("div");
-        div.setAttribute("class", "form-check form-check-inline")
-        radioTag.append(div);
+        // Define the plot layout
+        var layout = {
+            title: "Crime Types",
+            barmode: "stack"
+        };
 
-        // Add new radio to control tag
-        //radioTag.append(inp);
-        div.append(inp);
+        // Plot the chart to a div tag with id "plot"
+        Plotly.newPlot("crimechart", data, layout);
+    }
+    ////////////////////////////////////////////////////
+    //Initializes the Dashboard
+    function init() {
+        var val = 2019;
 
-        // Create label for the radio
-        var lb = document.createElement("label");
-        lb.setAttribute("class", "form-check-label");
-        lb.setAttribute("for", newRadio);
-        lb.textContent = newRadio;
+        var year = [2019, 2018, 2017, 2016, 2015, 2014, 2013, "Time Lapse"];
 
-        // Add input to the control tag
-        div.append(lb);
+        populateDropDown(year);
+        optionChanged(val);
+
+
+        // d3.json(samples).then((data) => {
+        //   var listDDVals = data.names; //filter the json by getting just the names tag info
+
+        //   populateDropDown(listDDVals);
+
+        //   const defaultVal = listDDVals[0];
+        //   //console.log(defaultVal); //sanity check
+
+        //   //optionChanged(defaultVal)
+        // });
     }
 
-};
+
+    ////////////////////////////////////////////////////
+    //Captures on change values
+    function optionChanged(val) {
+        crimeVal=""
+        if (isNaN(val) == false) {
+            createDisp(val);
+            createCrimeChoropleth(val);
+            createCrimeGraph(val);
+        } else { autoRun() }
+
+        createCrimeYearGraph(crimeVal);
+    }
 
 
-////////////////////////////////////////////////////
-// Create bar chart
-function createBar(list) {
-    //Create the Traces
-    const n = 10
-    var otuIds = list.map(rec => rec.otu_ids);
-    var sampleVals = list.map(rec => rec.sample_values);
-    var otuLabels = list.map(rec => rec.otu_labels);
-  
-    var xaxis = sampleVals.flat().slice(0, n) //adding flat() since there is a nested array
-    var yaxis = otuIds.flat().map(id => `OTU ${id}`).slice(0, n) //appending a literal
-    var text = otuLabels.flat().slice(0, n)
-  
-    // console.log(xaxis); //sanity check
-    // console.log(yaxis); //sanity check
-    // console.log(text) //sanity check
-  
-    var trace = {
-      x: xaxis,
-      y: yaxis,
-      text: text,
-      type: "bar",
-      orientation: "h",
-    };
-  
-    // Create the data array for the plot
-    var data = [trace];
-  
-    // Define the plot layout
-    var layout = {
-      title: "Top Ten Bacteria Cultures Found",
-      barmode: "stack",
-      yaxis: { autorange: 'reversed' }
-    };
-  
-    // Plot the chart to a div tag with id "plot"
-    Plotly.newPlot("barchart", data, layout);
-  }
-
-////////////////////////////////////////////////////
-//Initializes the Dashboard
-function init() {
-    var val = 2019;
-
-    var year = [2019, 2018, 2017, 2016, 2015, 2014, 2013, "Time Lapse"];
-
-    populateDropDown(year);
-    optionChanged(val);
-
-
-    // d3.json(samples).then((data) => {
-    //   var listDDVals = data.names; //filter the json by getting just the names tag info
-
-    //   populateDropDown(listDDVals);
-
-    //   const defaultVal = listDDVals[0];
-    //   //console.log(defaultVal); //sanity check
-
-    //   //optionChanged(defaultVal)
-    // });
-}
-
-
-////////////////////////////////////////////////////
-//Captures on change values
-function optionChanged(val) {
-    if (isNaN(val) == false) {
-        createDisp(val);
-        createCrimeChoropleth(val);
-        createCrimeGraphs(val);
-    } else { autoRun() }
-}
-
-
-function autoRun() {
-    optionChanged(val);
-}
+    function autoRun() {
+        optionChanged(val);
+    }
