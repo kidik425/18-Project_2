@@ -350,18 +350,6 @@ console.log(crimeYear)
 
         populateDropDown(year);
         optionChanged(val);
-
-
-        // d3.json(samples).then((data) => {
-        //   var listDDVals = data.names; //filter the json by getting just the names tag info
-
-        //   populateDropDown(listDDVals);
-
-        //   const defaultVal = listDDVals[0];
-        //   //console.log(defaultVal); //sanity check
-
-        //   //optionChanged(defaultVal)
-        // });
     }
 
 
