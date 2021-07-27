@@ -7,7 +7,7 @@ h2 CrimeType Chart
 * Bar by Crime Type
 
 h2 CrimeType Year Over Year Chart
-* Scatter Crimes/Types by Year (does not use the time change)
+* Scatter Crimes/Types by Year (does not use the time change) MARC AND DREW WILL DO THIS.  STEVE DO NOT DO THIS.
 
 
 h2 General
