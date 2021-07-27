@@ -92,23 +92,28 @@ h1 {
   background-color: #f5f5f5;
 }
 
-/* Charts on right side of page */
+/* Top chart on right side of page */
 .chart{
   float: right;
   position: relative;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  width: 70px;
-  height: 100px;
- 
+  margin-bottom: 5px;
+  padding-bottom: 135px;
+  height: 450px; 
 } 
 
+/* Bottom chart on right side of page */
+.chart2{
+  float: right;
+  position: relative;
+  margin-top: 5px;
+  padding-top: 0px;
+  padding-bottom: 135px;
+  height: 450px; 
+} 
 
 
 /* Map */
 #map{
   float: left;
   position: relative;
-  padding-right: 0px;
-  width: 350px; 
 }
