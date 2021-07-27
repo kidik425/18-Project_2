@@ -2,7 +2,7 @@
 
 <h2> Topic: Crime related to marijuana dispensaries in Los Angeles City  </h2>
 
-<h2> Central Question: Does crime correlate with location of legal marijuana dispensaries? </h2>
+<h3> Central Question: Does crime correlate with location of legal marijuana dispensaries? </h3>
 
 **Data Sets** <br>
 Crime Data Set: https://catalog.data.gov/dataset/crime-data-from-2010-to-2019 <br>
@@ -42,5 +42,5 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 •	Java Script <br>
 •	Leaflet/Mapbox <br>
 •	HTML/CSS <br>
-
+•	Plotly <br>
 
