@@ -89,11 +89,25 @@ function createDisp(yearVal) {
             if (feature.properties.location_start_year <= yearVal) return true
         }
 
-        // Create a GeoJSON layer containing the features array on the earthquakeData object
-        // Add GeoJSON to the earthquakes layergroup
+        // replace Leaflet's default blue marker with a custom icon
+        function createCustomIcon (feature, latlng) {
+          let myIcon = L.icon({
+            iconUrl: 'static/images/weed_map_icon.png',
+            iconSize:     [25, 25], // width and height of the image in pixels
+            shadowSize:   [35, 20], // width, height of optional shadow image
+            iconAnchor:   [12, 12], // point of the icon which will correspond to marker's location
+            shadowAnchor: [12, 6],  // anchor point of the shadow. should be offset
+            popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+          })
+          return L.marker(latlng, { icon: myIcon })
+        };
+
+        // Create a GeoJSON layer containing the features array on the dispensary object
+        // Add GeoJSON to the dispensaries layergroup
         L.geoJSON(data.features, {
             onEachFeature: onEachFeature,
-            filter: yearFilter
+            filter: yearFilter,
+            pointToLayer: createCustomIcon
         }).addTo(dispensaries);
     });
 
