@@ -94,12 +94,15 @@ h1 {
 
 /* Charts on right side of page */
 .chart{
-  float: left;
+  float: right;
   position: relative;
-  padding: 2px;
-  width: 100px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  width: 70px;
+  height: 100px;
  
-}
+} 
+
 
 
 /* Map */
@@ -107,5 +110,5 @@ h1 {
   float: left;
   position: relative;
   padding-right: 0px;
-  width: 350px;
+  width: 350px; 
 }
