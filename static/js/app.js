@@ -168,7 +168,7 @@ function createCrimeYearGraph(crimeVal) {
         // }
 
         //Populate the barchart 
-        createCrimeChart(listCTY);
+        createCrimeChart(data);
     });
 }
 
@@ -319,7 +319,7 @@ var legend = L.control({ position: "bottomright" });
 
         // Define the plot layout
         var layout = {
-            title: "Crime Types",
+            title: "Crime Types Year Over Year",
             barmode: "stack"
         };
 
