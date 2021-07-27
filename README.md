@@ -1,4 +1,4 @@
-<h1> Project2: Steve, Andrew, Drew, and Marc </h1>
+<h1> Project 2: Steve, Andrew, Drew, and Marc </h1>
 
 <h2> Topic: Crime related to marijuana dispensaries in Los Angeles City  </h2>
 
