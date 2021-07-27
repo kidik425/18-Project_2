@@ -43,6 +43,9 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 •	Leaflet/Mapbox <br>
 •	HTML/CSS <br>
 •	Plotly <br>
+•	GeoPandas <br>
+•	GeoJSON <br>
+•	Bootstrap <br>
 
 **If Changes Need to Be Made (complicated due to CSV files being too big for Git Hub** <br>
 •	On Marc's local machine, re-run "Project_2.ipynb" and "crime_list.ipynb" <br>
