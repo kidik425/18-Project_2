@@ -1,7 +1,7 @@
 h2 Map
 * Legend
 * Markers Resizing
-* Can we use the area as a filter???
+* Can we use the area as a filter???  I.E. - LIKE CLICK ON LAPD AREA 1 AND THEN ALL THE CHARTS CHANGE TO REFLECT IT.  THIS IS OPTIONAL.
 
 h2 CrimeType Chart
 * Bar by Crime Type
