@@ -3,7 +3,7 @@
 const dispQuery = 'static/data/disp.geojson'
 const crimesQuery = "static/data/crime.geojson"
 const crimeTypeQuery = "static/data/crime_grouped.json"
-
+const iconMarker = 'static/images/weed_map_icon.png'
 
 ////////////////////////////////////////////////////
 // Year list/array
@@ -25,7 +25,8 @@ const barLayout = {
     }
   },
   font: {
-    size: 12
+    size: 12,
+    color: "white"
   },
   margin: {
     l: 50,
@@ -35,13 +36,19 @@ const barLayout = {
     pad: 4
   },
   height: 300,
+  width: 500,
   xaxis: {
     tickangle: 45
   },
-  yaxis:{
+  yaxis: {
     showgrid: false,
     showline: false
-  }
+  },
+
+  color: "rgb(0,20,225)"
+
+  , plot_bgcolor: "rgba(0,0,0,0)",
+  paper_bgcolor: "rgba(0,0,0,0)"
 };
 
 // layout for line chart
@@ -51,20 +58,35 @@ const lineLayout = {
       size: 16
     }
   },
-  height: 250,
+  font: {
+    size: 12,
+    color: "white"
+  },
+  height: 300,
+  width: 500,
+  marker: {
+    color: 'rgb(17, 157, 255)',
+    size: 100,
+    line: {
+      color: 'rgb(231, 99, 250)',
+      width: 6
+    }
+  },
   margin: {
     l: 50,
     r: 50,
     b: 50,
     t: 75,
     pad: 4
-  }
+  },
+  plot_bgcolor: "rgba(0,0,0,0)",
+  paper_bgcolor: "rgba(0,0,0,0)"
 };
 
 ////////////////////////////////////////////////////
 // icon properties
 const icon = {
-  iconUrl: 'static/images/weed_map_icon.png',
+  iconUrl: iconMarker,
   iconSize: [20, 20], // width and height of the image in pixels
   shadowSize: [35, 20], // width, height of optional shadow image
   iconAnchor: [12, 12], // point of the icon which will correspond to marker's location
