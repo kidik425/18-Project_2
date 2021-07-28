@@ -90,7 +90,8 @@ h1 {
   height: 60px; /* Set the fixed height of the footer here */
   line-height: 60px; /* Vertically center the text there */
   background-color: yellowgreen;
-  color: whitesmoke
+  color: whitesmoke;
+  text-align:center
 }
 
 /* Top chart on right side of page */
