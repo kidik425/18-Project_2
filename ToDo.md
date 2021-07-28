@@ -8,6 +8,7 @@
         - ANDREW HAS WRITTEN CODE FOR IT 
 
 * Can we use the area as a filter???  
+        - Not going to do
         - LIKE CLICK ON LAPD AREA 1 AND THEN ALL THE CHARTS CHANGE TO REFLECT IT.  
         - THIS IS OPTIONAL.
 

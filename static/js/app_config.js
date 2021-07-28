@@ -36,7 +36,7 @@ const barLayout = {
     pad: 4
   },
   height: 300,
-  width: 500,
+  width: 600,
   xaxis: {
     tickangle: 45
   },
@@ -63,7 +63,7 @@ const lineLayout = {
     color: "white"
   },
   height: 300,
-  width: 500,
+  width: 600,
   marker: {
     color: 'rgb(17, 157, 255)',
     size: 100,
