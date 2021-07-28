@@ -1,7 +1,5 @@
-const dispQuery = 'static/data/disp.geojson'
-const crimesQuery = "static/data/crime.geojson"
-const crimeTypeQuery = "static/data/crime_grouped.json"
-
+////////////////////////////////////////////////////
+// Define  layer groups to be used by mapping
 var dispensaries = L.layerGroup();
 var crime = L.layerGroup();
 
@@ -91,14 +89,7 @@ function createDisp(yearVal) {
 
         // replace Leaflet's default blue marker with a custom icon
         function createCustomIcon(feature, latlng) {
-            let myIcon = L.icon({
-                iconUrl: 'static/images/weed_map_icon.png',
-                iconSize: [25, 25], // width and height of the image in pixels
-                shadowSize: [35, 20], // width, height of optional shadow image
-                iconAnchor: [12, 12], // point of the icon which will correspond to marker's location
-                shadowAnchor: [12, 6],  // anchor point of the shadow. should be offset
-                popupAnchor: [0, 0] // point from which the popup should open relative to the iconAnchor
-            })
+            let myIcon = L.icon(icon)
             return L.marker(latlng, { icon: myIcon })
         };
 
@@ -125,11 +116,11 @@ function createCrimeChoropleth(yearVal) {
         function style(feature) {
             return {
                 fillColor: getColor(feature.properties.crime_counts),
-                weight: 2,
-                opacity: 1,
-                color: 'white',
-                dashArray: '3',
-                fillOpacity: 0.7
+                weight: choroWeight,
+                opacity: choroOpacity,
+                color: choroColor,
+                dashArray: choroDashArray,
+                fillOpacity: choroFillOpacity
             }
         }
 
@@ -183,11 +174,9 @@ function createCrimeGraph(yearVal) {
         var data = [trace];
 
         // Define the plot layout
-        var layout = {
-            title: "Crime Types",
-            //barmode: "stack",
-            height: 350
-        };
+        const barTitle =  `Crime Types For ${yearVal}`
+        const layout = barLayout; //from app_config
+        layout["title"]["text"] = barTitle
 
         // Plot the chart to a div tag with id "plot"
         Plotly.newPlot("barchart", data, layout);
@@ -239,22 +228,35 @@ function createCrimeYearGraph(crimeVal) {
     });
 }
 
+////////////////////////////////////////////////////
+// Create time series chart
+function createCrimeChart(list, name) {
+    //Create the Traces
+    const n = 10
+    var crimeCounts = list.map(rec => rec.Counts);
+    var crimeYear = list.map(rec => rec.Year);
 
-//////////////////////////////////////////////////
-// Define colors for choropleth
-function getColor(counts) {
-    var color;
+    var xaxis = crimeYear
+    var yaxis = crimeCounts
+    var text = crimeYear.flat().slice(0, n)
 
-    if (counts < 5000) { color = '#FECFCF' }
-    else if (counts < 5500) { color = '#FE9F9F' }
-    else if (counts < 6000) { color = '#FD504F' }
-    else if (counts < 6500) { color = '#FD0100' }
-    else if (counts < 7000) { color = '#b01030' }
-    else if (counts < 7500) { color = '#9a0e2a' }
-    else if (counts < 8000) { color = '#840c24' }
-    else { color = '#6e0a1e' }
+    var trace = {
+        x: xaxis,
+        y: yaxis,
+        text: text,
+        type: "line"
+    };
 
-    return color;
+    // Create the data array for the plot
+    var data = [trace];
+
+    // Define the plot layout
+    var lineTitle = `${name} Year Over Year`;
+    const layout = lineLayout; //from app_config
+    layout["title"]["text"] = lineTitle
+
+    // Plot the chart to a div tag with id "plot"
+    Plotly.newPlot("crimechart", data, layout);
 }
 
 
@@ -300,41 +302,6 @@ function populateDropDown(year) {
 };
 
 
-////////////////////////////////////////////////////
-// Create time series chart
-function createCrimeChart(list, name) {
-    //Create the Traces
-    const n = 10
-    var crimeCounts = list.map(rec => rec.Counts);
-    var crimeYear = list.map(rec => rec.Year);
-
-    var title = `${name} Year Over Year`;
-
-    var xaxis = crimeYear
-    var yaxis = crimeCounts
-    var text = crimeYear.flat().slice(0, n)
-
-    var trace = {
-        x: xaxis,
-        y: yaxis,
-        text: text,
-        type: "line"
-    };
-
-    // Create the data array for the plot
-    var data = [trace];
-
-    // Define the plot layout
-    var layout = {
-        title: title,
-        height: 300
-    };
-
-    // Plot the chart to a div tag with id "plot"
-    Plotly.newPlot("crimechart", data, layout);
-}
-
-
 //////////////////////////////////////////////////
 // LEGEND
 // Create a legend to display information about our map
@@ -343,7 +310,7 @@ var legend = L.control({ position: "bottomright" });
 // When the layer control is added, insert a div with the class of "legend"
 legend.onAdd = function () {
     var div = L.DomUtil.create("div", "legend");
-    categories = ['-10—9', '10—29', '30—49', '50—69', '70—89', '90+'];
+    categories = legCategories;
 
     div.innerHTML += '';
     for (var i = 0; i < categories.length; i++) {
@@ -363,9 +330,9 @@ legend.addTo(myMap);
 function init() {
     var val = 2019;
 
-    var year = [2019, 2018, 2017, 2016, 2015, 2014, 2013, "Time Lapse"];
+    var yr = year; //comes from config
 
-    populateDropDown(year);
+    populateDropDown(yr);
     optionChanged(val);
 
 }
