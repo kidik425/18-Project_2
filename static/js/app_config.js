@@ -37,6 +37,10 @@ const barLayout = {
   height: 300,
   xaxis: {
     tickangle: 45
+  },
+  yaxis:{
+    showgrid: false,
+    showline: false
   }
 };
 
@@ -61,7 +65,7 @@ const lineLayout = {
 // icon properties
 const icon = {
   iconUrl: 'static/images/weed_map_icon.png',
-  iconSize: [25, 25], // width and height of the image in pixels
+  iconSize: [20, 20], // width and height of the image in pixels
   shadowSize: [35, 20], // width, height of optional shadow image
   iconAnchor: [12, 12], // point of the icon which will correspond to marker's location
   shadowAnchor: [12, 6],  // anchor point of the shadow. should be offset
