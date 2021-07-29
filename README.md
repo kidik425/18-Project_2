@@ -6,6 +6,7 @@
 
 **Data Sets** <br>
 Crime Data Set: https://catalog.data.gov/dataset/crime-data-from-2010-to-2019 <br>
+CSV file for Crime Data Set: https://catalog.data.gov/dataset/crime-data-from-2010-to-2019/resource/7019ef5a-a383-479c-8a28-8175ced9b7f5 <br>
 Dispensary Data Set 1: https://cannabis.lacity.org/personal-activity/find-licensed-retailers <br>
 Dispensary Data Set 2: https://search.cannabis.ca.gov <br>
 Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about <br>
