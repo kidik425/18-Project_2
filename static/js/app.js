@@ -2,6 +2,7 @@
 // Define  layer groups to be used by mapping
 var dispensaries = L.layerGroup();
 var crime = L.layerGroup();
+var crimemedian = L.layerGroup();
 
 init();
 
@@ -46,7 +47,8 @@ var baseMaps = {
 // Create overlay object to hold our overlay layer
 var overlayMaps = {
     Dispensaries: dispensaries,
-    Crime: crime
+    Crime: crime,
+    GeoMedian: crimemedian
 };
 
 
@@ -55,7 +57,7 @@ var overlayMaps = {
 var myMap = L.map("map", {
     center: [34.0522, -118.357],
     zoom: 9.5,
-    layers: [grayscalemap, dispensaries, crime] //ORDERING THIS SO THAT THE TOOLTIPS WORK
+    layers: [grayscalemap, crimemedian]//dispensaries, crime] //ORDERING THIS SO THAT THE TOOLTIPS WORK
 });
 
 
@@ -135,6 +137,40 @@ function createCrimeChoropleth(yearVal) {
             style: style,
             filter: filter
         }).addTo(crime)
+
+    });
+}
+
+
+//////////////////////////////////////////////////
+// Map crime data
+function createCrimeMedian(yearVal) {
+    d3.json(geoMedianQuery).then(function (data) {
+        //Clear layer on val change
+        crimemedian.clearLayers();
+
+        console.log(data)
+        // // Creating style for the choropleth
+        // function style(feature) {
+        //     return {
+        //         fillColor: getColor(feature.properties.crime_counts),
+        //         weight: choroWeight,
+        //         opacity: choroOpacity,
+        //         color: choroColor,
+        //         dashArray: choroDashArray,
+        //         fillOpacity: choroFillOpacity
+        //     }
+        // }
+
+        // function filter(feature) {
+        //     if (feature.properties.year == yearVal) return true
+        // }
+
+        // Add crimes GeoJSON to the techtonics layergroup
+        L.geoJSON(data.features, {
+            // style: style,
+            // filter: filter
+        }).addTo(crimemedian)
 
     });
 }
@@ -352,6 +388,7 @@ function optionChanged(val) {
         createDisp(val);
         createCrimeChoropleth(val);
         createCrimeGraph(val);
+        createCrimeMedian(val);
     } else { autoRun() }
 
     createCrimeYearGraph(crimeVal, crimeType);

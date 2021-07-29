@@ -3,9 +3,9 @@
 * Legend
         - MARC WILL DO THIS AFTER COLORS ARE FINALIZED
 
-* Markers Resizing 
-        - DREW IS GONNA WORK ON MAKING THE WEED ICON WORK
-        - ANDREW HAS WRITTEN CODE FOR IT 
+* <s> Markers Resizing <br> </s>
+      <s>   - DREW IS GONNA WORK ON MAKING THE WEED ICON WORK  <br>  </s>
+      <s>   - ANDREW HAS WRITTEN CODE FOR IT  </s>
 
 * Can we use the area as a filter???  
         - Not going to do
@@ -28,7 +28,10 @@
 
 <h2> General  </h2>
 
-* Time Lapse Functionality <br>
+* Time Lapse Functionality - THIS IS OPTIONAL <br>
 * Beautify <br>
 * Headers <br>
 * Footer <br>
+
+<h2> Landing Page </h2>
+Create "about" landing page with basic info.  This could be the crux of the presentation: We have an investor looking to possibly invest in a dispenary, and wants to look at the issue of crime.
