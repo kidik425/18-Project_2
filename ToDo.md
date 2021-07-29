@@ -32,3 +32,6 @@
 * Beautify <br>
 * Headers <br>
 * Footer <br>
+
+<h2> Landing Page </h2>
+Create "about" landing page with basic info
