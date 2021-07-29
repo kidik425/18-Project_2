@@ -1,9 +1,10 @@
 ////////////////////////////////////////////////////
 // Input files
-const dispQuery = 'static/data/disp.geojson'
+const dispQuery = "static/data/disp.geojson"
 const crimesQuery = "static/data/crime.geojson"
 const crimeTypeQuery = "static/data/crime_grouped.json"
-const iconMarker = 'static/images/weed_map_icon.png'
+const geoMedianQuery = "static/data/stats/crime_center.geojson"
+const iconMarker = "static/images/weed_map_icon.png"
 
 ////////////////////////////////////////////////////
 // Year list/array
