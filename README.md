@@ -49,7 +49,5 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 •	Bootstrap <br>
 
 **If Changes Need to Be Made (complicated due to CSV files being too big for Git Hub** <br>
-•	On Marc's local machine, re-run "Project_2.ipynb" and "crime_list.ipynb" <br>
-•	Copy/paste/add to actual repo and then upload the following to the static/data folder: the JSON files for 2013-2019, "crime_grouped.json" <br>
-•	Copy/paste/add to actual repo and then upload the following to the ETL folder: "project_2.ipynb" and "crime_list.ipynb" <br>
-•	In the repo's ETL folder: open and re-run "choropleth" <br>
+•	Re-run "Project_2.ipynb" and "crime_list.ipynb" <br>
+•	In the ETL folder: open and re-run "choropleth" <br>
