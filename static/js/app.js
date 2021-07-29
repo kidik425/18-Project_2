@@ -349,7 +349,7 @@ var legend = L.control({ position: "bottomright" });
 // When the layer control is added, insert a div with the class of "legend"
 legend.onAdd = function () {
     var div = L.DomUtil.create("div", "info legend");
-    let categories = [0, 5000, 5500, 6000, 6500, 7000, 7500, 8000]
+    let categories = [5418, 6607, 7795, 8984]
 
     div.innerHTML += 'Crime Incidents' + '<br>';
     for (var i = 0; i < categories.length; i++) {

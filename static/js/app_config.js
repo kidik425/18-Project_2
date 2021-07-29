@@ -103,14 +103,14 @@ const choroFillOpacity = 0.7;
 function getColor(counts) {
   var color;
 
-  if (counts < 5000) { color = '#FECFCF' }
-  else if (counts < 5500) { color = '#FE9F9F' }
-  else if (counts < 6000) { color = '#FD504F' }
-  else if (counts < 6500) { color = '#FD0100' }
-  else if (counts < 7000) { color = '#B01030' }
-  else if (counts < 7500) { color = '#9a0e2a' }
-  else if (counts < 8000) { color = '#840c24' }
-  else { color = '#6e0a1e' } //i.e., over 8000
+  if (counts < 6606) { color = '#FECFCF' }
+  // else if (counts < 5500) { color = '#FE9F9F' }
+  else if (counts < 7794) { color = '#FD504F' }
+  // else if (counts < 6500) { color = '#FD0100' }
+  else if (counts < 8983) { color = '#B01030' }
+  // else if (counts < 7500) { color = '#9a0e2a' }
+  // else if (counts < 10173) { color = '#840c24' }
+  else { color = '#6e0a1e' } //i.e., max
 
   return color;
 }
