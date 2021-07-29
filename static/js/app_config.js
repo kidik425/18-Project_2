@@ -13,7 +13,7 @@ var year = [2019, 2018, 2017, 2016, 2015, 2014, 2013];
 
 ////////////////////////////////////////////////////
 // Legend Categories
-const legCategories = ['-10—9', '10—29', '30—49', '50—69', '70—89', '90+']
+const legCategories = ['0—9', '10—29', '30—49', '50—69', '70—89', '90+']
 
 
 ////////////////////////////////////////////////////
@@ -110,7 +110,7 @@ function getColor(counts) {
   else if (counts < 7000) { color = '#B01030' }
   else if (counts < 7500) { color = '#9a0e2a' }
   else if (counts < 8000) { color = '#840c24' }
-  else { color = '#6e0a1e' }
+  else { color = '#6e0a1e' } //i.e., over 8000
 
   return color;
 }

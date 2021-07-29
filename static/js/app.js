@@ -348,20 +348,21 @@ var legend = L.control({ position: "bottomright" });
 
 // When the layer control is added, insert a div with the class of "legend"
 legend.onAdd = function () {
-    var div = L.DomUtil.create("div", "legend");
-    categories = legCategories;
+    var div = L.DomUtil.create("div", "info legend");
+    let categories = [0, 5000, 5500, 6000, 6500, 7000, 7500, 8000]
 
-    div.innerHTML += '';
+ 
     for (var i = 0; i < categories.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColor(categories[i]) + '"></i> ' +
-            (categories[i] ? categories[i] + '<br>' : '+');
-    }
-
-    return div;
-};
-
-legend.addTo(myMap);
+        div.innerHTML += '<i style="background:' + 
+        getColor(categories[i] + 1) + '"></i> ' + 
+        categories[i] + (categories[i + 1] ? '&ndash;' + categories[i + 1] + '<br>' : '+');
+        }
+        return div;
+        };
+        
+  
+        
+        legend.addTo(myMap);
 
 
 ////////////////////////////////////////////////////
