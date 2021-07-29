@@ -351,7 +351,7 @@ legend.onAdd = function () {
     var div = L.DomUtil.create("div", "info legend");
     let categories = [0, 5000, 5500, 6000, 6500, 7000, 7500, 8000]
 
- 
+    div.innerHTML += 'Crime Incidents' + '<br>';
     for (var i = 0; i < categories.length; i++) {
         div.innerHTML += '<i style="background:' + 
         getColor(categories[i] + 1) + '"></i> ' + 
