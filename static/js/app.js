@@ -61,7 +61,6 @@ var myMap = L.map("map", {
 });
 
 
-
 ////////////////////////////////////////////////////
 // Create a layer control
 // Pass in our baseMaps and overlayMaps
@@ -212,7 +211,7 @@ function createCrimeGraph(yearVal) {
         var data = [trace];
 
         // Define the plot layout
-        const barTitle =  `Crime Types For ${yearVal}`
+        const barTitle = `Crime Types For ${yearVal}`
         const layout = barLayout; //from app_config
         layout["title"]["text"] = barTitle
 
@@ -242,16 +241,14 @@ function createCrimeYearGraph(crimeVal) {
 
     d3.json(crimeTypeQuery).then((data) => {
 
-        if (crimeVal) 
-        {  
+        if (crimeVal) {
             for (var i = 0; i < data.length; i++) {
                 if (data[i].Crime_Type == crimeVal) {
                     listCTY.push(data[i]);
                 }
             }
         }
-        else 
-        {listCTY = data}
+        else { listCTY = data }
 
         var dataRollUp = d3.nest()
             .key(function (d) { return d.Year })
@@ -301,7 +298,7 @@ function createCrimeChart(list, name) {
 
 ////////////////////////////////////////////////////
 //Populates the dropdown list
-function populateDropDown(year) {
+function createRadioButtons(year) {
     var radioTag = document.getElementById("control");
 
     for (var i = 0; i < year.length; i++) {
@@ -349,20 +346,28 @@ var legend = L.control({ position: "bottomright" });
 // When the layer control is added, insert a div with the class of "legend"
 legend.onAdd = function () {
     var div = L.DomUtil.create("div", "info legend");
-    let categories = [5418, 6607, 7795, 8984]
+    
 
     div.innerHTML += 'Crime Incidents' + '<br>';
     for (var i = 0; i < categories.length; i++) {
-        div.innerHTML += '<i style="background:' + 
-        getColor(categories[i] + 1) + '"></i> ' + 
-        categories[i] + (categories[i + 1] ? '&ndash;' + categories[i + 1] + '<br>' : '+');
+        // div.innerHTML += '<i style="background:'
+        if (i == 0) {
+            div.innerHTML += '<i style="background:' + getColor(categories[i]) + '"></i> ' +
+              '<= ' +  categories[i] + '<br>';
+
         }
-        return div;
-        };
-        
-  
-        
-        legend.addTo(myMap);
+        var start_level = categories[i] + 1;
+        var end_level = categories[i + 1];
+
+        div.innerHTML += '<i style="background:' + getColor(categories[i] + 1) + '"></i> ' +
+            start_level + (end_level ? '&ndash;' + end_level + '<br>' : '+');
+
+    }
+    return div;
+};
+
+legend.addTo(myMap);
+
 
 
 ////////////////////////////////////////////////////
@@ -372,7 +377,7 @@ function init() {
 
     var yr = year; //comes from config
 
-    populateDropDown(yr);
+    createRadioButtons(yr);
     optionChanged(val);
 
 }
@@ -382,7 +387,7 @@ function init() {
 //Captures on change values
 function optionChanged(val) {
     var crimeVal = "";
-    var crimeType ="";
+    var crimeType = "";
 
     if (isNaN(val) == false) {
         createDisp(val);

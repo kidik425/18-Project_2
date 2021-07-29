@@ -65,16 +65,15 @@ html {
   padding: 6px 8px;
   font: 12px Arial, Helvetica, sans-serif;
   font-weight: bold;
-  background-color: "black";
   line-height: 25px;
   color: #555;
   width: auto; 
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  opacity: 0.9;
+  opacity: 1;
 }
 
-/* I DONT KNOW HOW BUT THIS MAKES THE COLORS COME UP ON LEGEND */
+/* I DONT KNOW HOW BUT THIS MAKES THE COLORS COME UP ON LEGEND DO NOT DELTE */
 .legend i {
   width: 18px;
   height: 18px;

@@ -10,12 +10,6 @@ const iconMarker = "static/images/weed_map_icon.png"
 // Year list/array
 var year = [2019, 2018, 2017, 2016, 2015, 2014, 2013];
 
-
-////////////////////////////////////////////////////
-// Legend Categories
-const legCategories = ['0—9', '10—29', '30—49', '50—69', '70—89', '90+']
-
-
 ////////////////////////////////////////////////////
 // Chart configuration
 // layout for the bar chart
@@ -100,16 +94,15 @@ const choroFillOpacity = 0.7;
 
 //////////////////////////////////////////////////
 // Define colors for choropleth
+let categories = [5417, 6606, 7794, 8983]
+
 function getColor(counts) {
   var color;
 
-  if (counts < 6606) { color = '#FECFCF' }
-  // else if (counts < 5500) { color = '#FE9F9F' }
-  else if (counts < 7794) { color = '#FD504F' }
-  // else if (counts < 6500) { color = '#FD0100' }
-  else if (counts < 8983) { color = '#B01030' }
-  // else if (counts < 7500) { color = '#9a0e2a' }
-  // else if (counts < 10173) { color = '#840c24' }
+  if (counts < 5418) { color = '#FECFCF' }
+  else if (counts < 6606) { color = '#FD504F' }
+  else if (counts < 7794) { color = '#B01030' }
+  else if (counts < 8983) { color = '#840c24' }
   else { color = '#6e0a1e' } //i.e., max
 
   return color;
