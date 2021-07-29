@@ -1,7 +1,7 @@
 <h2> Map </h2>
 
-* Legend
-        - MARC WILL DO THIS AFTER COLORS ARE FINALIZED
+* <s>Legend
+        - MARC WILL DO THIS AFTER COLORS ARE FINALIZED </s>
 
 * <s> Markers Resizing <br> </s>
       <s>   - DREW IS GONNA WORK ON MAKING THE WEED ICON WORK  <br>  </s>
