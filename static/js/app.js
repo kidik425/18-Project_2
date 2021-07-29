@@ -57,7 +57,7 @@ var overlayMaps = {
 var myMap = L.map("map", {
     center: [34.0522, -118.357],
     zoom: 9.5,
-    layers: [grayscalemap, crimemedian]//dispensaries, crime] //ORDERING THIS SO THAT THE TOOLTIPS WORK
+    layers: [grayscalemap, dispensaries, crime] //ORDERING THIS SO THAT THE TOOLTIPS WORK
 });
 
 
@@ -149,7 +149,6 @@ function createCrimeMedian(yearVal) {
         //Clear layer on val change
         crimemedian.clearLayers();
 
-        console.log(data)
         // // Creating style for the choropleth
         // function style(feature) {
         //     return {
@@ -162,14 +161,14 @@ function createCrimeMedian(yearVal) {
         //     }
         // }
 
-        // function filter(feature) {
-        //     if (feature.properties.year == yearVal) return true
-        // }
+        function filter(feature) {
+            if (feature.properties.year == yearVal) return true
+        }
 
         // Add crimes GeoJSON to the techtonics layergroup
         L.geoJSON(data.features, {
             // style: style,
-            // filter: filter
+            filter: filter
         }).addTo(crimemedian)
 
     });
