@@ -38,4 +38,7 @@
 * Can get rid of top nav bar but do not get rid of left nav bar - can move stuff from top into left <br>
 
 <h2> Landing Page </h2>
-Create "about" landing page with basic info.  This could be the crux of the presentation: We have an investor looking to possibly invest in a dispenary, and wants to look at the issue of crime.
+* Create "about" landing page with basic info.  This could be the crux of the presentation: We have an investor looking to possibly invest in a dispenary, and wants to look at the issue of crime. <br>
+
+<h2> Andrews markers </h2>
+* Maybe change the nature of the markers to different markers?
