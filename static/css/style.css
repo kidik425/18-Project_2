@@ -2,6 +2,7 @@ body {
   padding: 0;
   margin: 0;
   line-height: 1;
+  background-color: #A2AEBB;
 }
 
 body,
@@ -25,15 +26,16 @@ html {
 
 /* #map, */
 #map {
-  height: 150px;
+  height: 550px;
   min-height: 100%;
   min-width: 100%;  
   float: left;
   position: relative;
+  margin: 0;
 }
 
 #map-holder{
-  height: 100%;
+  height: 95%;
 }
 
 .fill
@@ -130,30 +132,23 @@ h1 {
 
 /* Top chart on right side of page */
 #barchart{
-  float: right;
   position: relative;
   margin: 0px;
-  padding: 0px;
-  height: auto; 
-  width: 250;
-  background-color: transparent;
+  margin-top: 3px;
 } 
 
 /* Bottom chart on right side of page */
 #crimechart{
-  float: right;
   position: relative;
   margin-top: 0px;
-  padding: 0px;
-  height: auto; 
-  background-color: transparent;
+  margin-bottom: -10px;
 } 
 
 /* left nav bar */
 #leftnav{
   padding-left: 20px;
   border-right-style:solid;
-  border-right-color: lightskyblue;
+  border-right-color: lightgrey;
 }
 
 a {

@@ -18,6 +18,10 @@ const legCategories = ['-10—9', '10—29', '30—49', '50—69', '70—89', '9
 ////////////////////////////////////////////////////
 // Chart configuration
 // layout for the bar chart
+const markerColor = {color: "#9a0e2a"}
+const textColor = "#453b3d"
+const chartBGColor = "#E7EAEE"
+
 const barLayout = {
   title: {
     font: {
@@ -26,7 +30,7 @@ const barLayout = {
   },
   font: {
     size: 12,
-    color: "white"
+    color: textColor
   },
   margin: {
     l: 50,
@@ -35,7 +39,7 @@ const barLayout = {
     t: 50,
     pad: 4
   },
-  height: 300,
+  height: 250,
   width: 600,
   xaxis: {
     tickangle: 45
@@ -44,11 +48,8 @@ const barLayout = {
     showgrid: false,
     showline: false
   },
-
-  color: "rgb(0,20,225)"
-
-  , plot_bgcolor: "rgba(0,0,0,0)",
-  paper_bgcolor: "rgba(0,0,0,0)"
+  plot_bgcolor: chartBGColor,
+  paper_bgcolor: chartBGColor
 };
 
 // layout for line chart
@@ -60,18 +61,10 @@ const lineLayout = {
   },
   font: {
     size: 12,
-    color: "white"
+    color: "textColor"
   },
-  height: 300,
+  height: 250,
   width: 600,
-  marker: {
-    color: 'rgb(17, 157, 255)',
-    size: 100,
-    line: {
-      color: 'rgb(231, 99, 250)',
-      width: 6
-    }
-  },
   margin: {
     l: 50,
     r: 50,
@@ -79,8 +72,8 @@ const lineLayout = {
     t: 75,
     pad: 4
   },
-  plot_bgcolor: "rgba(0,0,0,0)",
-  paper_bgcolor: "rgba(0,0,0,0)"
+  plot_bgcolor: chartBGColor,
+  paper_bgcolor: chartBGColor
 };
 
 ////////////////////////////////////////////////////
@@ -113,7 +106,7 @@ function getColor(counts) {
   else if (counts < 5500) { color = '#FE9F9F' }
   else if (counts < 6000) { color = '#FD504F' }
   else if (counts < 6500) { color = '#FD0100' }
-  else if (counts < 7000) { color = '#b01030' }
+  else if (counts < 7000) { color = '#B01030' }
   else if (counts < 7500) { color = '#9a0e2a' }
   else if (counts < 8000) { color = '#840c24' }
   else { color = '#6e0a1e' }

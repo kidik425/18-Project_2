@@ -58,6 +58,8 @@ var myMap = L.map("map", {
     layers: [grayscalemap, dispensaries, crime] //ORDERING THIS SO THAT THE TOOLTIPS WORK
 });
 
+
+
 ////////////////////////////////////////////////////
 // Create a layer control
 // Pass in our baseMaps and overlayMaps
@@ -167,7 +169,8 @@ function createCrimeGraph(yearVal) {
             x: xaxis,
             y: yaxis,
             text: text,
-            type: "bar"
+            type: "bar",
+            marker: markerColor
         };
 
         // Create the data array for the plot
@@ -244,7 +247,8 @@ function createCrimeChart(list, name) {
         x: xaxis,
         y: yaxis,
         text: text,
-        type: "line"
+        type: "line",
+        marker: markerColor
     };
 
     // Create the data array for the plot
