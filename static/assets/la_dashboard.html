@@ -3,39 +3,37 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Dispensaries_LA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
 
-  <!-- Leaflet CSS -->
+  <!-- Leaflet css -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
 
-  <!-- Our CSS -->
+  <!-- bootstreap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
 
+  <!-- our css -->
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
 
 </head>
 
 <body>
-  <!-- background image -->
-  <!-- <img id="bg-image" src="static/images/leaf_background.jpeg"> -->
 
-  
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-          <div class="navbar-header">
-              <a class="navbar-brand" href="../../index.html"> Project LA 
-                  <img class="bear" src="../images/cabear.png"
-              <div class="hero text-center">
-              </a>
-              </div>
-          </div>
+  <nav class="navbar navbar-default container-fluid"">
+    <!-- <div class="container-fluid"> -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="../../index.html"> Project LA
+          <img class="bear" src="../images/cabear.png" <div class="hero text-center">
+        </a>
+      </div>
+    <!-- </div> -->
     </div>
-</nav>     
+  </nav>
+
   <div class="row">
     <!--veritcal nav -->
     <div class="col-md-1.5" id="leftnav">
@@ -48,22 +46,19 @@
     <!--map visualization -->
     <div class="col-md-10">
       <div class="col-md-10 text-center">
-        <!-- <div class="col-md-1 text-center"></div> -->
 
         <div class="col-md-10 text-center">
           <form name="yearForm">
-          <div id="control"> Select Year: </div>
+            <div id="control"> Select Year: </div>
           </form>
         </div>
 
-        <!-- <div class="col-md-1 text-center"></div> -->
       </div>
 
 
       <div class="row">
 
         <div class="col-md-6">
-          <!-- <div id="map" class="shadow mb-5 bg-white rounded"></div> -->
           <div id="map-holder">
             <div class="container fill">
               <div id="map" class="rounded"></div>
@@ -78,7 +73,7 @@
           </div>
 
           <div class="row">
-            <div id="crimechart" class="shadow rounded mb-5 bg-white" >
+            <div id="crimechart" class="shadow rounded mb-5 bg-white">
             </div>
           </div>
         </div>
@@ -87,20 +82,6 @@
 
     </div>
   </div>
-  <!-- </div> -->
-
-
-
-  <!-- FOOTER
-   <footer class="footer">
-        
-    <span class="bottom">Project by Steve, Andrew, Drew, and Marc. Copyright 2021</span>
-        
-
-    </footer> -->
-    
-
-
 
 
   <!-- Leaflet JS -->
@@ -122,12 +103,13 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 </body>
-  <!-- FOOTER -->
-  <footer class="footer">
-        
-    <span class="bottom">Project by Steve, Andrew, Drew, and Marc. Copyright 2021</span>
-        
 
-    </footer>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <span class="bottom">Project by Steve, Andrew, Drew, and Marc. Copyright 2021</span>
+
+</footer>
 
 </html>

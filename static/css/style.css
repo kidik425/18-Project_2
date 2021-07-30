@@ -27,6 +27,13 @@ html {
   margin: 0;
 }
 
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 /*radio control */
 #control{
   padding-top: 10px;
@@ -57,10 +64,10 @@ html {
   max-width: 100%;
 }
 
-.container{
+/* .container{
   max-width:60em;
   padding: 0.2em;
-}
+} */
 
 /* legend */
 .info {
@@ -106,42 +113,6 @@ html {
   height: 22px;
 }
 
-.legend .min {
-  float: left;
-  padding-bottom: 5px;
-  font-size: 15px;
-}
-
-.legend .first {
-  position: absolute;
-  right: 75%;
-  font-size: 15px;
-}
-
-.legend .second {
-  position: absolute;
-  right: 58%;
-  font-size: 15px;
-}
-
-.legend .third {
-  position: absolute;
-  right: 43.5%;
-  font-size: 15px;
-}
-
-.legend .fourth {
-  position: absolute;
-  right: 27.5%;
-  font-size: 15px;
-}
-
-.legend .max {
-  /* float: right; */
-  position: absolute;
-  right: 12.5%;
-  font-size: 15px;
-}
 
 h1 {
   text-align: center;
@@ -211,10 +182,6 @@ img#bg-image {
   overflow: auto;
 }
 
-/* .nav-color{
-  background-color:lightslategrey;
-  color: lightgrey
-} */
 
 .navbar {
   padding: 5px;
