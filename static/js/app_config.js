@@ -1,10 +1,10 @@
 ////////////////////////////////////////////////////
 // Input files
-const dispQuery = "static/data/disp.geojson"
-const crimesQuery = "static/data/crime.geojson"
-const crimeTypeQuery = "static/data/crime_grouped.json"
-const geoMedianQuery = "static/data/crime_median.geojson"
-const iconMarker = "static/images/weed_map_icon.png"
+const dispQuery = "../data/disp.geojson"
+const crimesQuery = "../data/crime.geojson"
+const crimeTypeQuery = "../data/crime_grouped.json"
+const geoMedianQuery = "../data/crime_median.geojson"
+const iconMarker = "../images/weed_map_icon.png"
 
 ////////////////////////////////////////////////////
 // Year list/array
