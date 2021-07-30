@@ -148,26 +148,28 @@ function createCrimeMedian(yearVal) {
         //Clear layer on val change
         crimemedian.clearLayers();
 
-        // // Creating style for the choropleth
-        // function style(feature) {
-        //     return {
-        //         fillColor: getColor(feature.properties.crime_counts),
-        //         weight: choroWeight,
-        //         opacity: choroOpacity,
-        //         color: choroColor,
-        //         dashArray: choroDashArray,
-        //         fillOpacity: choroFillOpacity
-        //     }
-        // }
-
         function filter(feature) {
             if (feature.properties.year == yearVal) return true
         }
 
+        // Define a function we want to run once for each feature in the features array
+        function onEachFeature(feature, layer) {
+            layer.bindPopup("<h3>" + feature.properties.business_name +
+                "</h3><hr><p>" + new Date(feature.properties.location_start_date) +
+                "</p><p>" + feature.properties.street_address + "</p>");
+        };
+
+        // replace Leaflet's default blue marker with a custom icon
+        function createCustomIcon(feature, latlng) {
+            let myIcon = L.icon(iconMedian)
+            return L.marker(latlng, { icon: myIcon })
+        };
+
         // Add crimes GeoJSON to the techtonics layergroup
         L.geoJSON(data.features, {
             // style: style,
-            filter: filter
+            filter: filter,
+            pointToLayer: createCustomIcon
         }).addTo(crimemedian)
 
     });
