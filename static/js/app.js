@@ -189,11 +189,25 @@ function createCrimeGraph(yearVal) {
             }
         }
 
-        /////        // //Populate the barchart 
+        /////        // //Populate the barchart
+        var crimeTypeRollUp = d3.nest()
+            .key(function (d) { return d.Year})
+            .key(function (d) { return d.Crime_Type})
+            .rollup(function (v) { return d3.sum(v, function (d) { return d.Crime_Counts; }); })
+            .entries(listCT)
+            .map(function (d) {
+                // return {d}
+                return { Year: d.key, Crimes: d.values }
+            }); 
         /////        // createBar(listCT);
         const n = 10
-        var crimeCounts = listCT.map(rec => rec.Crime_Counts);
-        var crimeType = listCT.map(rec => rec.Crime_Type);
+        var crimeCounts = [];
+        var crimeType = [];
+        for (var i = 0; i < crimeTypeRollUp[0].Crimes.length; i++){
+             crimeCounts.push(crimeTypeRollUp.map(rec => rec.Crimes[i].value));
+             crimeType.push(crimeTypeRollUp.map(rec => rec.Crimes[i].key));
+        }
+        
 
         var xaxis = crimeType.flat().slice(0, n) //adding flat() since there is a nested array
         var yaxis = crimeCounts.flat().slice(0, n) //appending a literal
