@@ -1,8 +1,21 @@
+* {
+  /* box-sizing: border-box; */
+  font-family: Ubuntu, sans-serif;
+}
+h1{
+  color: white;
+}
+
+h2 {
+  text-align: center;
+  color: white;
+}
+
 body {
-  padding: 0;
+  padding: -10;
   margin: 0;
   line-height: 1;
-  background-color: #A2AEBB;
+  background-color: #2b3e50;;
 }
 
 body,
@@ -10,10 +23,8 @@ html {
   height: 100%;
   min-height : 100%;
   min-width : 100%;
-  background-size:100% 100%;
-  background-repeat:no-repeat;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
 }
 
 /*radio control */
@@ -139,14 +150,13 @@ h1 {
 
 /* footer */
 .footer {
-  position: relative;
+  position: absolute;
+  right: 0;
   bottom: 0;
-  width: 100%;
-  height: 60px; /* Set the fixed height of the footer here */
-  line-height: 60px; /* Vertically center the text there */
-  background-color: yellowgreen;
-  color: whitesmoke;
-  text-align:center
+  left: 0;
+  min-height: 25px;
+  background:darkgreen;
+  color: whitesmoke
 }
 
 /* Top chart on right side of page */
@@ -193,9 +203,106 @@ img#bg-image {
   background-repeat: no-repeat;
   background-size: cover; 
 }
+ /* The wrapper contains all of the page's content besides the footer, which is pushed to the bottom of the page */
+ .wrapper {
+  position: relative;
+  min-height: 50%;
+  padding-bottom: 0px;
+  overflow: auto;
+}
 
-
-.nav-color{
+/* .nav-color{
   background-color:lightslategrey;
   color: lightgrey
+} */
+
+.navbar {
+  padding: 5px;
+  margin: 0;
+  background-color: #4e5d6c;
 }
+
+/* This CSS styles the bear icon in the navbar */
+.bear{
+  position: absolute;
+  bottom: -4px;
+  left: 110px;
+  width: 35px;
+  color: white;
+}
+
+/* The styles for the parallax */
+.hero {
+  position: center;
+  height: 0px;
+  padding: 0px;
+  margin: 0;
+  background: black;
+  /* image: url("static/images/Picture1.png"); */
+  background-attachment: fixed;
+  background-position: bottom center;
+  background-size: cover;
+}
+
+.hero h1 {
+  margin-top: 100px;
+  font-size: 0.1rem;
+  animation: title 2.2s forwards linear;
+}
+
+.hero p {
+  font-size: 2rem;
+  opacity: 0;
+  animation: subtitle 1.2s forwards linear;
+  animation-delay: 2.2s;
+}
+.hero h1 {
+  animation: smaller-title 1.2s forwards linear;
+}
+
+
+/* keyframe animations which will be used to animate the title */
+@keyframes title {
+from {
+  opacity: 0;
+}
+
+to {
+  font-size: 7.5rem;
+  opacity: 1;
+}
+}
+
+@keyframes smaller-title {
+from {
+  opacity: 0;
+}
+
+to {
+  font-size: 5.5rem;
+  opacity: 1;
+}
+}
+
+@keyframes subtitle {
+from {
+  opacity: 0;
+}
+
+to {
+  opacity: 1;
+}
+}
+
+ /* media queries which will only be activated at specific screen sizes */
+ @media (max-width: 800px) {
+  #table-area td {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 500px) {
+  #table-area thead {
+    display: none;
+  }
+} 
