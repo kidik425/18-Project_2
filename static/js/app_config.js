@@ -24,7 +24,7 @@ const barLayout = {
     }
   },
   font: {
-    size: 12,
+    size: 10,
     color: textColor
   },
   margin: {
