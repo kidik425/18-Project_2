@@ -65,7 +65,9 @@ var myMap = L.map("map", {
 // Create a layer control
 // Pass in our baseMaps and overlayMaps
 // Add the layer control to the map
-L.control.layers(baseMaps, overlayMaps).addTo(myMap);
+L.control.layers(baseMaps, overlayMaps,{
+    collapsed:false
+}).addTo(myMap);
 
 
 ////////////////////////////////////////////////////
@@ -80,9 +82,8 @@ function createDisp(yearVal) {
 
         // Define a function we want to run once for each feature in the features array
         function onEachFeature(feature, layer) {
-            layer.bindPopup("<h3>" + feature.properties.business_name +
-                "</h3><hr><p>" + new Date(feature.properties.location_start_date) +
-                "</p><p>" + feature.properties.street_address + "</p>");
+            layer.bindPopup("<h4>" + feature.properties.business_name +
+                "</h4><p>" + feature.properties.street_address + "</p>");
         }
 
         // Create filter for year
@@ -155,7 +156,6 @@ function createCrimeMedian(yearVal) {
         // Define a function we want to run once for each feature in the features array
         function onEachFeature(feature, layer) {
             layer.bindPopup("<h3>" + feature.properties.business_name +
-                "</h3><hr><p>" + new Date(feature.properties.location_start_date) +
                 "</p><p>" + feature.properties.street_address + "</p>");
         };
 

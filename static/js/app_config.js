@@ -31,7 +31,7 @@ const barLayout = {
   margin: {
     l: 50,
     r: 50,
-    b: 100,
+    b: 55,
     t: 50,
     pad: 4
   },
