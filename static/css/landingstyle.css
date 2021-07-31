@@ -161,6 +161,8 @@
     opacity: 0;
     animation: subtitle 1.2s forwards linear;
     animation-delay: 2.2s;
+    border-radius: 1rem;
+    background-color: green;
   }
   
   /* input placeholder color changes */
