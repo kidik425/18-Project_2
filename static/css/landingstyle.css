@@ -156,6 +156,12 @@
     animation: subtitle 1.2s forwards linear;
     animation-delay: 2.2s;
   }
+
+  .btn {
+    opacity: 0;
+    animation: subtitle 1.2s forwards linear;
+    animation-delay: 2.2s;
+  }
   
   /* input placeholder color changes */
   .form-control::-webkit-input-placeholder {
