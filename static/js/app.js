@@ -220,7 +220,8 @@ function createCrimeGraph(yearVal) {
             y: yaxis,
             text: text,
             type: "bar",
-            marker: markerColor
+            marker: markerColor, 
+            hovertemplate: '<i># Crimes</i>: %{y}<extra></extra>' 
         };
 
         // Create the data array for the plot
