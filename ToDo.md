@@ -1,7 +1,7 @@
 <h2> Map </h2>
 
 <h2>  CrimeType Chart  </h2>
-  * Scale the yaxis so that it's not so big <br>
+
 
     
 
