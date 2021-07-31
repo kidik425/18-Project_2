@@ -45,7 +45,8 @@ const barLayout = {
     showline: false
   },
   plot_bgcolor: chartBGColor,
-  paper_bgcolor: chartBGColor
+  paper_bgcolor: chartBGColor, 
+  hovermode: 'closest'
 };
 
 // layout for line chart
