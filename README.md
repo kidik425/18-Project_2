@@ -4,6 +4,8 @@
 
 <h3> Central Question: Does crime correlate with location of legal marijuana dispensaries? </h3>
 
+<h3> Git hub page: https://kidik425.github.io/18-Project_2/static/assets/la_dashboard.html </h3>
+
 **Data Sets** <br>
 Crime Data Set: https://catalog.data.gov/dataset/crime-data-from-2010-to-2019 <br>
 CSV file for Crime Data Set: https://catalog.data.gov/dataset/crime-data-from-2010-to-2019/resource/7019ef5a-a383-479c-8a28-8175ced9b7f5 <br>
