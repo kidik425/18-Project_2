@@ -65,8 +65,8 @@ var myMap = L.map("map", {
 // Create a layer control
 // Pass in our baseMaps and overlayMaps
 // Add the layer control to the map
-L.control.layers(baseMaps, overlayMaps,{
-    collapsed:false
+L.control.layers(baseMaps, overlayMaps, {
+    collapsed: false
 }).addTo(myMap);
 
 
@@ -193,23 +193,23 @@ function createCrimeGraph(yearVal) {
 
         /////        // //Populate the barchart
         var crimeTypeRollUp = d3.nest()
-            .key(function (d) { return d.Year})
-            .key(function (d) { return d.Crime_Type})
+            .key(function (d) { return d.Year })
+            .key(function (d) { return d.Crime_Type })
             .rollup(function (v) { return d3.sum(v, function (d) { return d.Crime_Counts; }); })
             .entries(listCT)
             .map(function (d) {
                 // return {d}
                 return { Year: d.key, Crimes: d.values }
-            }); 
+            });
         /////        // createBar(listCT);
         const n = 10
         var crimeCounts = [];
         var crimeType = [];
-        for (var i = 0; i < crimeTypeRollUp[0].Crimes.length; i++){
-             crimeCounts.push(crimeTypeRollUp.map(rec => rec.Crimes[i].value));
-             crimeType.push(crimeTypeRollUp.map(rec => rec.Crimes[i].key));
+        for (var i = 0; i < crimeTypeRollUp[0].Crimes.length; i++) {
+            crimeCounts.push(crimeTypeRollUp.map(rec => rec.Crimes[i].value));
+            crimeType.push(crimeTypeRollUp.map(rec => rec.Crimes[i].key));
         }
-        
+
 
         var xaxis = crimeType.flat().slice(0, n) //adding flat() since there is a nested array
         var yaxis = crimeCounts.flat().slice(0, n) //appending a literal
@@ -220,8 +220,8 @@ function createCrimeGraph(yearVal) {
             y: yaxis,
             text: text,
             type: "bar",
-            marker: markerColor, 
-            hovertemplate: '<i># Crimes</i>: %{y}<extra></extra>' 
+            marker: markerColor,
+            hovertemplate: '<i># Crimes</i>: %{y}<extra></extra>'
         };
 
         // Create the data array for the plot
@@ -363,14 +363,14 @@ var legend = L.control({ position: "bottomright" });
 // When the layer control is added, insert a div with the class of "legend"
 legend.onAdd = function () {
     var div = L.DomUtil.create("div", "info legend");
-    
+
 
     div.innerHTML += 'Crime Incidents' + '<br>';
     for (var i = 0; i < categories.length; i++) {
         // div.innerHTML += '<i style="background:'
         if (i == 0) {
             div.innerHTML += '<i style="background:' + getColor(categories[i]) + '"></i> ' +
-              '<= ' +  categories[i] + '<br>';
+                '<= ' + categories[i] + '<br>';
 
         }
         var start_level = categories[i] + 1;
@@ -414,8 +414,4 @@ function optionChanged(val) {
     } else { autoRun() }
 
     createCrimeYearGraph(crimeVal, crimeType);
-}
-
-function autoRun() {
-    optionChanged(val);
 }
