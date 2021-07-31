@@ -30,6 +30,13 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 •	Manually examined data for locations with matching addresses or coordinates <br>
 •	Dispensary data correlates with Choropleth maps to exclude non-Los Angeles City locations <br>
 
+**Statistical Analysis: Crime Data** <br>
+•   Identify a measure of center for crime data coordinates using [Geometric Median](https://stackoverflow.com/a/30305181/15231357) method <br>
+•   Geometric Median points for each police precinct added to map layer for comparison to Dispensary locations <br>
+•   Crime data's measure of center visualizes the geographic skew in the data <br>
+•   If dispensaries are a leading variable to crime, then the geographic median of crime would skew toward <br> 
+    the location of dispensaries.
+
 **Geographic Area** <br>
 •	Los Angeles Police Department (LAPD) 21 different "Community Police Station" areas <br>
 
