@@ -4,14 +4,14 @@
 
 <h3> Central Question: Does crime correlate with location of legal marijuana dispensaries? </h3>
 
-**Git Hib Page** <br>
-https://kidik425.github.io/18-Project_2/static/assets/la_dashboard.html <br>
+**Git Hub Pages Link** <br>
+[github.io/18-Project_2](https://kidik425.github.io/18-Project_2/static/assets/la_dashboard.html) <br>
 
 **Data Sets** <br>
-Crime Data Set: https://catalog.data.gov/dataset/crime-data-from-2010-to-2019 <br>
-Dispensary Data Set 1: https://cannabis.lacity.org/personal-activity/find-licensed-retailers <br>
-Dispensary Data Set 2: https://search.cannabis.ca.gov <br>
-Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about <br>
+[Crime Data Set](https://catalog.data.gov/dataset/crime-data-from-2010-to-2019) <br>
+[Dispensary Data Set 1](https://cannabis.lacity.org/personal-activity/find-licensed-retailers) <br>
+[Dispensary Data Set 2](https://search.cannabis.ca.gov) <br>
+[Geographic Areas](https://geohub.lacity.org/datasets/lahub::lapd-divisions/about) <br>
 
 **ETL: Crime Data** <br>
 • Narrowed down to violent crimes; final dataset contains **996,161** incidents of crime with coordinates of where crime occurred <br>
@@ -46,7 +46,7 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 
 **Future Improvements/Plans** <br>
 •	A vetted, 100% accurate source of retail dispensary locations <br>
-•	Re-organization of data into Census Tracts so that demographic features can be factored into decision making (see, for example, findings from Sciece Direct: https://www.sciencedirect.com/science/article/pii/S221133552030125X)<br>
+•	Re-organization of data into Census Tracts so that demographic features can be factored into decision making (see, for example, findings from [Science Direct](https:/sciencedirect.com/science/article/pii/S221133552030125X) )<br>
 
 **Programs/Libraries Used** <br>
 •	Pandas <br>
