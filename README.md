@@ -4,17 +4,17 @@
 
 <h3> Central Question: Does crime correlate with location of legal marijuana dispensaries? </h3>
 
-<h3> Git hub page: https://kidik425.github.io/18-Project_2/static/assets/la_dashboard.html </h3>
+**Git Hib Page** <br>
+https://kidik425.github.io/18-Project_2/static/assets/la_dashboard.html <br>
 
 **Data Sets** <br>
 Crime Data Set: https://catalog.data.gov/dataset/crime-data-from-2010-to-2019 <br>
-CSV file for Crime Data Set: https://catalog.data.gov/dataset/crime-data-from-2010-to-2019/resource/7019ef5a-a383-479c-8a28-8175ced9b7f5 <br>
 Dispensary Data Set 1: https://cannabis.lacity.org/personal-activity/find-licensed-retailers <br>
 Dispensary Data Set 2: https://search.cannabis.ca.gov <br>
 Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about <br>
 
 **ETL: Crime Data** <br>
-• Narrowed down to violent crimes; final dataset contains **996,161** incidents of crime <br>
+• Narrowed down to violent crimes; final dataset contains **996,161** incidents of crime with coordinates of where crime occurred <br>
 •	Imported as CSV from Los Angeles City <br>
 •	Deleted rows missing location coordinates <br>
 •	Deleted columns not needed for analysis <br>
@@ -34,11 +34,12 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 •	Los Angeles Police Department (LAPD) 21 different "Community Police Station" areas <br>
 
 **Challenges** <br>
-•	Could not find a _solid single source_ for dispensary location data - all sources had some data, but no central "source of truth"  <br>
+•	Could not find a _single source_ for dispensary location data - all sources had _some_ data, but no central "source of truth"  <br>
 •	Contacted California Bureau of Cannabis Control who sent the website that we had already used  <br>
 
 **Future Improvements/Plans** <br>
 •	A vetted, 100% accurate source of retail dispensary locations <br>
+•	Re-organization of data into Census Tracts so that demographic features can be factored into decision making (see, for example, findings from Sciece Direct: https://www.sciencedirect.com/science/article/pii/S221133552030125X)<br>
 
 **Programs/Libraries Used** <br>
 •	Pandas <br>
@@ -50,6 +51,8 @@ Geographic Areas: https://geohub.lacity.org/datasets/lahub::lapd-divisions/about
 •	GeoJSON <br>
 •	Bootstrap <br>
 
-**If Changes Need to Be Made (complicated due to CSV files being too big for Git Hub** <br>
-•	Re-run "Project_2.ipynb" and "crime_list.ipynb" <br>
-•	In the ETL folder: open and re-run "choropleth" <br>
+**Findings** <br>
+•	There were 751 crimes that occurred at a marijuana business location (including illegal business) - 56% of these crimes were burglaries <br>
+•	There were 157,601 crimes that occurred at a non-marijuana business retail stores - 59% of these crimes were theft <br>
+•	Wherever goods or services are exchanged for money, the opportunity for burglary, theft, or robbery is present <br>
+•	Nothing in these data indicate a unique occurrence of crime, either in type or location, to marijuana businesses <br>
