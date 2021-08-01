@@ -22,9 +22,9 @@
   
   /* The footer is positioned at the bottom of the page */
   .footer {
-    position: absolute;
+    position: fixed;
     right: 0;
-    bottom: 0;
+    bottom: -5px;
     left: 0;
     min-height: 25px;
     background:darkgreen;
@@ -38,9 +38,9 @@
   }
   
   /* This CSS styles the bear icon in the navbar */
-  .bear{
+  .navlion{
     position: absolute;
-    bottom: -4px;
+    bottom: 7px;
     left: 110px;
     width: 35px;
     color: white;
@@ -106,7 +106,7 @@
   }
   
   .hero h1 {
-    margin-top: 100px;
+    margin-top: 80px;
     font-size: 0.1rem;
     animation: title 2.2s forwards linear;
   }

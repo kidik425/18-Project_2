@@ -203,9 +203,9 @@ img#bg-image {
 }
 
 /* This CSS styles the bear icon in the navbar */
-.bear{
+.navlion{
   position: absolute;
-  bottom: -4px;
+  bottom: 7px;
   left: 110px;
   width: 35px;
   color: white;
