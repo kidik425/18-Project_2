@@ -1,9 +1,10 @@
 * {
-  /* box-sizing: border-box; */
   font-family: Ubuntu, sans-serif;
 }
-h1{
+
+h1 {
   color: white;
+  text-align: center;
 }
 
 h2 {
@@ -11,36 +12,54 @@ h2 {
   color: white;
 }
 
+html,
 body {
-  padding: -10;
-  margin: 0;
-  line-height: 1;
-  background-color: #2b3e50;;
-}
-
-body,
-html {
-  height: 100%;
-  min-height : 100%;
-  min-width : 100%;
+  height:0;
   padding: 0;
   margin: 0;
 }
 
-.container-fluid {
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+body {
+  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  line-height: 1.42857143;
+  color: #ebebeb;
+  background-color: #2b3e50;
+  display: block;
 }
 
+a {
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 25px;
+  background:darkgreen;
+  color: whitesmoke
+}
+
+
+/* *************** Ids *************** */
 /*radio control */
 #control{
   padding-top: 10px;
   padding-bottom: 10px;
   color: white
 }
-
 
 /* #map, */
 #map {
@@ -56,6 +75,56 @@ html {
   height: 95%;
 }
 
+/* Top chart on right side of page */
+#barchart{
+  position: relative;
+  margin: 0px;
+  margin-top: 3px;
+} 
+
+/* Bottom chart on right side of page */
+#crimechart{
+  position: relative;
+  margin-top: 0px;
+} 
+
+/* left nav bar */
+#leftnav{
+  padding-left: 20px;
+  border-right-style:solid;
+  border-right-color: lightgrey;
+}
+
+/* image */
+img#bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(25px);
+
+  /* Full height */
+  height: 100%;
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+
+
+/* *************** classes *************** */
+.container-fluid {
+  margin-right: -15px;
+  margin-left: -15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .fill
 {
   min-height: 100%;
@@ -63,11 +132,6 @@ html {
   width: 100%;
   max-width: 100%;
 }
-
-/* .container{
-  max-width:60em;
-  padding: 0.2em;
-} */
 
 /* legend */
 .info {
@@ -91,7 +155,6 @@ html {
   opacity: 1;
 }
 
-/* I DONT KNOW HOW BUT THIS MAKES THE COLORS COME UP ON LEGEND DO NOT DELTE */
 .legend i {
   width: 18px;
   height: 18px;
@@ -113,67 +176,6 @@ html {
   height: 22px;
 }
 
-
-h1 {
-  text-align: center;
-}
-
-
-/* footer */
-.footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  min-height: 25px;
-  background:darkgreen;
-  color: whitesmoke
-}
-
-/* Top chart on right side of page */
-#barchart{
-  position: relative;
-  margin: 0px;
-  margin-top: 3px;
-} 
-
-/* Bottom chart on right side of page */
-#crimechart{
-  position: relative;
-  margin-top: 0px;
-} 
-
-/* left nav bar */
-#leftnav{
-  padding-left: 20px;
-  border-right-style:solid;
-  border-right-color: lightgrey;
-}
-
-a {
-  color: white;
-}
-
-/* image */
-img#bg-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-
-  /* Add the blur effect */
-  filter: blur(8px);
-  -webkit-filter: blur(25px);
-
-  /* Full height */
-  height: 100%;
-  width: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; 
-}
  /* The wrapper contains all of the page's content besides the footer, which is pushed to the bottom of the page */
  .wrapper {
   position: relative;
@@ -182,11 +184,22 @@ img#bg-image {
   overflow: auto;
 }
 
-
+/* navbar */
 .navbar {
   padding: 5px;
   margin: 0;
+}
+
+.navbar-default{
   background-color: #4e5d6c;
+}
+
+.navbar-brand {
+  float: left;
+  padding: 9.5px 15px;
+  font-size: 19px;
+  line-height: 21px;
+  height: 40px;
 }
 
 /* This CSS styles the bear icon in the navbar */
