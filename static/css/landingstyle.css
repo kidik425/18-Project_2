@@ -31,45 +31,7 @@
     color: whitesmoke
   }
   
-  /* new buttons */
-  /* .ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  .li {
-    float: left;
-  }
-  
-  .li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  .li a:hover:not(.active) {
-    background-color: #111;
-  }
-  
-  .active {
-    background-color: #04AA6D;
-  } */
 
-  /* The code styles the text at the bottom of the footer */
-  /* .footer > .bottom {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 5px;
-    background: #1b3146; */
-  /* } */
-  
   .navbar {
     padding: 5px;
     margin: 0;
@@ -138,7 +100,6 @@
     padding: 0px;
     margin: 0;
     background: black;
-    /* image: url("static/images/Picture1.png"); */
     background-attachment: fixed;
     background-position: bottom center;
     background-size: cover;
